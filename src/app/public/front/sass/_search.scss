@@ -1,0 +1,110 @@
+.search-box-container {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  & > div + div {
+    margin-left: 2rem;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    display: flex;
+  }
+}
+.scroll-decoration {
+  &::-webkit-scrollbar {
+    height: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    border-radius: 12px;
+    cursor: pointer;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(121, 121, 121, 0.1);
+    border: 5px solid rgba(121, 121, 121, 0.1);
+    border-radius: 12px;
+    cursor: pointer;
+  }
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: #777;
+    border: 4px solid #777;
+  }
+}
+
+.search-input {
+  color: #fff;
+  border-color: #a1a1a1;
+  background: 0 0;
+}
+
+.search-form {
+  padding: 3rem 0;
+  max-width: 360px;
+}
+.search-controls {
+  padding: 0 0 15px;
+}
+
+.form {
+  width: 100%;
+  border-color: #a1a1a1;
+  border-radius: 0;
+}
+
+.favorite-search-words {
+  span.word {
+    white-space: nowrap;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px 10px;
+    line-height: 1.5;
+    cursor: pointer;
+  }
+  span.word + span.word {
+    margin-left: 1rem;
+  }
+  span.word:hover {
+    background: #ccc;
+    color: #2a2b30;
+  }
+
+  span.word span.remove {
+    border: 1px solid #2a2b30;
+    border-radius: 100%;
+    padding: 0 3px;
+    margin-left: 5px;
+    cursor: pointer;
+  }
+  span.word:hover span.remove {
+    border: 1px solid #ccc;
+  }
+
+  span.remove:hover {
+    border: 1px solid #2a2b30;
+    border-radius: 100%;
+    color: #ccc;
+    background: #2a2b30;
+    padding: 0 3px;
+    cursor: pointer;
+  }
+}
+
+.search-history {
+  .word {
+    border: 1px solid $item-bg-color;
+    padding: 0.2rem 2rem;
+    border-radius: 2rem;
+    background-color: $item-bg-color;
+    color: #646464;
+    line-height: 1.6;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid #646464;
+    background-color: #646464;
+    color: #fff;
+    &:hover {
+      border: 1px solid $theme-color;
+      color: #fff;
+    }
+  }
+}

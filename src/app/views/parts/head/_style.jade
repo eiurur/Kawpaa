@@ -1,0 +1,6 @@
+if process.env.NODE_ENV == "production"
+  link(rel="stylesheet", href="front/css/vendors/lib.min.css")
+  link(rel="stylesheet", href="front/css/app.min.css")
+else
+  link(rel="stylesheet", href="front/css/vendors/lib.css")
+  link(rel="stylesheet", href="front/css/app.css")

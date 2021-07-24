@@ -1,0 +1,23 @@
+extends layout
+
+block body
+
+  .h100per(ng-controller='AdminUserCtrl')
+
+    .cover-until-authenticated(ng-if='!isReady')
+      .spinner
+
+    .h100per(ng-if='isReady')
+      .h100per.login__bg(ng-if='!isAuthenticated')
+        include ./parts/_login
+
+      span(ng-if='isAuthenticated')
+        toaster-container
+        shortcut-help-container
+        include ./parts/_nav
+        include ./parts/_sidebar
+        .site-main(ng-view)
+
+    span(ng-if='!isReady')
+      .intro-container
+        .spinner

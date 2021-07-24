@@ -1,0 +1,255 @@
+@charset "utf-8";
+
+/**
+Copyright (c) 2016 - Darcy Voutt - http://codepen.io/darcyvoutt/pen/ogPrpK
+
+Permission is hereby granted, free of charge, to any person
+obtaining a copy of this software and associated documentation
+files (the "Software"), to deal in the Software without restriction,
+ including without limitation the rights to use, copy, modify,
+merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall
+be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+DEALINGS IN THE SOFTWARE.
+*/
+
+.history-container:after {
+  position: absolute;
+  top: 0;
+  left: 25px;
+  z-index: -1;
+  border-left: 1px solid $theme-color;
+  width: 1px;
+  height: 100%;
+  content: '';
+}
+
+.history-container {
+  position: relative;
+  z-index: 0;
+  & a,
+  .clickable {
+    color: #bbb;
+    transition: 0.3s ease all;
+    &:hover {
+      color: white;
+    }
+  }
+}
+
+.cal-heatmap-container rect:hover {
+  stroke-width: 2 !important;
+}
+.days-selected .cal-heatmap-container rect {
+  opacity: 0.5;
+}
+.cal-heatmap-container .graph-rect {
+  fill: rgb(235, 237, 240);
+}
+.cal-heatmap-container rect.highlight {
+  stroke-width: 0;
+  opacity: 1;
+}
+.cal-heatmap-container rect.highlight-now {
+  stroke-width: 0;
+  opacity: 1;
+}
+
+.history-date {
+  margin: 1.2em 0 0.5em;
+}
+
+p.history-date-create {
+  position: relative;
+  z-index: 1;
+  padding-left: 40px;
+  margin: 0 0 16px;
+  min-height: 1.1rem;
+  line-height: 1;
+}
+
+p.history-date-create:before {
+  top: 0;
+  left: 20px;
+  z-index: 1;
+  width: 11px;
+  height: 11px;
+  background-color: #2a2b30;
+}
+
+p.history-date-create:after {
+  top: 2px;
+  left: 22px;
+  z-index: 2;
+  width: 7px;
+  height: 7px;
+  background-color: $theme-color;
+}
+
+p.history-date-create:before,
+p.history-date-create:after {
+  position: absolute;
+  border-radius: 50%;
+  content: '';
+}
+
+.history-items {
+  border: solid 1px $item-bg-color;
+  border-radius: 5px;
+  background-color: $item-bg-color;
+  padding: 14px;
+  margin-left: 48px;
+  &:hover {
+    border: solid 1px $theme-color;
+  }
+}
+.history-items--by-date {
+  color: $text-color;
+  margin-bottom: 16px;
+}
+
+.history-heatmap-container {
+  margin: 3rem 0 6rem;
+
+  &__title {
+    text-align: left;
+  }
+}
+#heatmap {
+  position: relative;
+  background: $item-bg-color;
+  border-radius: 1rem;
+  padding: 2rem;
+  overflow-x: auto;
+  width: 100%;
+}
+
+.history {
+  color: transparentize(white, 0.8);
+  letter-spacing: 0.5px;
+  position: relative;
+  line-height: 1.4em;
+  list-style: none;
+  text-align: left;
+  font-weight: 100;
+  border-radius: 0 1rem 1rem 0;
+
+  h1,
+  h2,
+  h3 {
+    letter-spacing: 1.5px;
+    font-weight: 100;
+  }
+
+  .item__wrapper {
+    display: flex;
+  }
+
+  &__time {
+    padding-bottom: $history-padding;
+  }
+
+  &__medias {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    margin-right: $history-padding;
+    transform: scale(1);
+    transition: transform 0.3s;
+    &:first-of-type {
+      margin-left: 0;
+    }
+  }
+
+  &__media {
+    width: 160px;
+
+    .media__wrapper {
+      width: 100%;
+      background: #f7f7f7;
+      border-radius: 8px;
+      height: 0;
+      padding-top: 100%;
+      position: relative;
+    }
+    .media__img {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 8px;
+      transition: opacity 0.2s;
+      object-fit: cover;
+    }
+  }
+
+  &__description {
+    width: 160px;
+    margin: 8px 0;
+    .description__wrapper {
+      width: 160px;
+      display: flex;
+    }
+    .description__link {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .event {
+    position: relative;
+
+    & .date {
+      left: ((($history-date * 0.6) + $history-spacing + $history-line + $history-dot + ($history-dotborder * 2)) * 1.5) * -1;
+      color: transparentize($section-color, 0.4);
+      text-align: right;
+      font-weight: 100;
+      font-size: 0.8em;
+      min-width: 120px;
+      position: absolute;
+      display: block;
+      top: 0;
+      transition: color ease 0.5s;
+      &:hover {
+        color: $section-color;
+      }
+    }
+
+    &:last-of-type {
+      padding-bottom: 0;
+      margin-bottom: 0;
+      border: none;
+    }
+
+    &:before,
+    &:after {
+      position: absolute;
+      display: block;
+      top: 0;
+    }
+
+    &:after {
+      box-shadow: 0 0 0 $history-dotborder transparentize($accent-color, 0);
+      left: ($history-spacing + $history-line + ($history-dot * 0.35)) * -1;
+      background: lighten($main-color, 0.05);
+      border-radius: 50%;
+      height: $history-dot;
+      width: $history-dot;
+      content: '';
+      top: 6px;
+    }
+  }
+}

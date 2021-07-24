@@ -1,0 +1,15 @@
+node_modules/*
+bower_components/*
+**/lib/*.txt
+**/*.txt
+data/thumbnails/*
+data/images/*
+data/videos/*
+data/**/*
+build/app/accesslog*
+build/app/consolelog*
+logs/**
+volume/**
+.env
+.env.docker
+build

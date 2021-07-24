@@ -1,0 +1,84 @@
+.sidebar {
+  background: $sidebar-color;
+  position: fixed;
+  z-index: $z-index--sidebar;
+  width: $sidebar-width + $sidebar-add-width;
+  height: 100%;
+  left: 0px;
+  transition: all, 0.25s, ease;
+
+  .logo {
+    font-size: $baseFontSize + 4px;
+    font-weight: 300;
+    display: block;
+    padding: 3rem;
+  }
+
+  .main-nav {
+    .nav-text {
+      .divider {
+        color: $divider-color;
+        text-transform: uppercase;
+        display: block;
+        padding: 0 3rem;
+      }
+
+      .divider:not(:first-child) {
+        padding-top: 3rem;
+      }
+
+      li {
+        color: $menu-color;
+        font-size: 2rem;
+        line-height: 1.8;
+      }
+
+      i {
+        margin-right: 0.5rem;
+        &:before {
+          padding: 0;
+        }
+      }
+
+      a {
+        color: $clickable-text-color;
+        text-decoration: none;
+        display: block;
+        font-weight: 300;
+        padding: 0.2rem 2.5rem;
+        font-size: 2rem;
+        display: flex;
+        align-items: center;
+
+        transition: 0.3s ease all;
+
+        &:hover {
+          color: $clickable-text-hover-color;
+        }
+
+        &.active {
+          color: $clickable-text-active-color;
+        }
+      }
+
+      .icon {
+        max-width: 32px;
+        height: auto;
+        border-radius: 100%;
+        margin-top: 2px;
+        margin-left: 15px;
+      }
+    }
+  }
+}
+
+.thumbnail {
+  border-radius: 4px, 4px;
+  padding: 0px;
+  border: 0px;
+
+  img {
+    border-radius: 4px 4px 0 0, 4px 4px 0 0;
+    width: 100%;
+  }
+}

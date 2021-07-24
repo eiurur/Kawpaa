@@ -1,0 +1,37 @@
+@charset "utf-8";
+
+.pagination {
+  &__term {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 40px 0;
+    color: $theme-color;
+
+    &--prev {
+      transform: translate(-5%, -7%); // 目視で
+    }
+
+    &--next {
+      transform: translate(5%, -7%); // 目視で
+    }
+  }
+
+  &__arrow {
+    flex: 1;
+    cursor: pointer;
+  }
+
+  &__button {
+    &--left {
+      margin-right: auto;
+      @include pagination-button();
+    }
+
+    &--right {
+      margin-left: auto;
+      @include pagination-button();
+    }
+  }
+}

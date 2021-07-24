@@ -1,0 +1,8 @@
+.item__control
+  .item__control--contents
+    .item__control--contents--icons
+      i.fa__size--sm.clickable.fa.fa-tint.icon-tint(post-object-id='{{::post._id}}', posts="postList", done, title='抜いた')
+      i.fa__size--sm.clickable.fa.fa-inbox.icon-inbox(post-object-id='{{::post._id}}', posts="postList",revert-inbox, title='Inboxに戻す')
+      i.fa__size--sm.clickable.fa.fa-trash.icon-trash(post-object-id='{{::post._id}}', posts="postList",remove, title='削除する')
+      a
+        i.fa__size--sm.clickable.fa.fa-external-link(page-type='{{::post.category}}', post-object-id='{{::post._id}}', open, title='新しいウィンドウで見る')

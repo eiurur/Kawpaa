@@ -1,0 +1,12 @@
+.search-condition__container.col-sm-12.col-md-12.col-lg-12(ng-show="isOpenPostControlContainer")
+  form.form
+    .form-group
+      .input-group
+        span.input-group-addon
+          i.fa.fa-filter
+        select(ng-model='filterTypeList.selected', ng-options='l.k for l in filterTypeList.items track by l.k')
+    .form-group
+      .input-group
+        span.input-group-addon
+          i.fa.fa-sort
+        select(ng-model='sortTypeList.selected', ng-options='l.k for l in sortTypeList.items track by l.k')

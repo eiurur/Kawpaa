@@ -1,0 +1,21 @@
+.item
+  .item__content(type="{{::post.type}}", post-object-id="{{::post._id}}", item-border, multi-select)
+    img.item__image(
+      ng-src='data/thumbnails/{{::post.fromImgSrc}}', 
+      to-img-src='data/thumbnails/{{::post.middleImgSrc}}', 
+      img-src="data/images/{{::post.images.original}}", 
+      id="{{::post._id}}", 
+      pipe-low-to-high-image, open-zoom-image-viewer)
+    .item__info
+      include ../../_item_title
+      div(ng-switch="post.category")
+        div(ng-switch-when="post")
+          include ./_inbox
+        div(ng-switch-when="archive")
+          include ./_archive
+        div(ng-switch-when="done")
+          include ./_done
+        div(ng-switch-when="favorite")
+          include ./_done
+        div(ng-switch-default)
+          include ./_inbox

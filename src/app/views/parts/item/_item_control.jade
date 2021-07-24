@@ -1,0 +1,13 @@
+div(ng-switch="pageType")
+  div(ng-switch-when="post")
+    include ./item_controls/post/_inbox
+  div(ng-switch-when="archive")
+    include ./item_controls/post/_archive
+  div(ng-switch-when="done")
+    include ./item_controls/post/_done
+  div(ng-switch-when="favorite")
+    include ./item_controls/post/_done
+  div(ng-switch-when="find")
+    include ./item_controls/post/_find
+  div(ng-switch-default)
+    include ./item_controls/post/_inbox

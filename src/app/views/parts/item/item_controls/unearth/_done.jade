@@ -1,0 +1,11 @@
+.item__control
+  .item__control--contents
+    .item__control--contents--icons
+      {{post.numDone}}
+      i.fa__size--sm.clickable.fa.fa-plus.icon-plus(post-object-id='{{::post._id}}', num-done='post.numDone', type='increase', flucate, title='さらに抜いた')
+      i.fa__size--sm.clickable.fa.fa-minus.icon-minus(post-object-id='{{::post._id}}', num-done='post.numDone', type='decrease', flucate, title='やっぱり抜いてない')
+      i.fa__size--sm.clickable.fa.fa-heart.icon-heart(post-object-id='{{::post._id}}', posts="postList", favorited='post.favorited', favorite, title='お気に入りに追加する')
+      i.fa__size--sm.clickable.fa.fa-trash.icon-trash(post-object-id='{{::post._id}}', posts="postList",type='done', remove, title='削除する')
+      // aタグがないとtextとcontrolsの間の余白がなくなり、レイアウトが崩れる。
+      a
+        i.fa__size--sm.clickable.fa.fa-external-link(page-type='{{::post.category}}', post-object-id='{{::post._id}}', open, title='新しいウィンドウで見る')

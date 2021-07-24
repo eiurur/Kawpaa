@@ -1,0 +1,151 @@
+@charset "utf-8";
+
+/**
+ * Usage  @include round;
+ */
+
+@mixin round($radius: 4px) {
+  border-radius: $radius;
+}
+
+@mixin post_padding {
+  padding: 0 20px;
+}
+
+@mixin zurui-box($shadow: 0.15) {
+  @include box-shadow(rgba(0, 0, 0, $shadow) 0 0 2px);
+}
+
+@mixin vertical-middle($deg: -50%) {
+  @include translateY($deg);
+  position: relative;
+  top: 50%;
+}
+
+@mixin tweet-text ($post--font-size: 14px){
+  padding: 0 20px 10px;
+  color: $link-color;
+  font-size: $post--font-size;
+  font-style: normal;
+  line-height: 1.8;
+  word-wrap: break-word;
+  a {
+    border-bottom: 1px solid lighten($link-color, 15%);
+    color: $link-color;
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+@mixin link($color-normal: $link-color, $color-hover: white) {
+  a {
+    color: $color-normal !important;
+    text-decoration: none;
+    transition: .2s ease;
+    &:hover
+    {
+      color: $color-hover !important;
+    }
+  }
+}
+
+// For dot-loader
+@mixin dot($margin-vertical: 0.3em) {
+  position: absolute;
+  margin: 0.3em $margin-vertical;
+  height: 1em;
+  width: 1em;
+  background: $theme-color;
+  @include round(50%);
+  display: inline-block;
+}
+
+// ページ送り
+@mixin page-arrow($arrow-translateX-px: 10px) {
+  cursor: pointer;
+  height: 100%;
+  width: calc(50vw - 40vw);
+  z-index: $z-index--page-arrow;
+  position: fixed;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.3);
+  transition: all, 0.25s, ease;
+  &:hover {
+    color: rgba(255, 255, 255, 1.0);
+  }
+  &:hover i {
+    transform: translateX($arrow-translateX-px);
+  }
+}
+
+@mixin pagination-button {
+  border: 1px solid;
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  display: flex;
+  transition: 0.3s ease all;
+
+  &:hover {
+    color: lighten($accent-color, 15%);
+  }
+
+  & a {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    display: flex;
+  }
+}
+
+/**
+ * 外枠
+ */
+@mixin plenty() {
+  padding: 9.5px;
+  margin: 0 0 10px;
+  font-size: 13px;
+  line-height: 1.42857143;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+@mixin media() {
+  .media {
+    .thumbnail-img {
+      max-width: 64px;
+      height: auto;
+      border-radius: 8px;
+    }
+
+    .user-icon {
+      position: relative;
+    }
+
+    .retweet-user-icon {
+      position: absolute;
+      top: 48px;
+      left: 44px;
+      z-index: $z-index--retweet-user-icon;
+      .icon-img {
+        max-width: 24px;
+        height: auto;
+        border-radius: 4px;
+      }
+    }
+
+    .media-heading {
+      color: #333;
+
+      .name {
+        font-size: 0.8em;
+        font-weight: bold;
+      }
+      .screen-name {
+        margin-left: 8px;
+        font-size: 0.8em;
+      }
+    }
+  }
+}

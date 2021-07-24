@@ -1,0 +1,17 @@
+div(ng-switch="pageType")
+  div(ng-switch-when="post")
+    span
+  div(ng-switch-when="archive")
+    include ./_archive
+  div(ng-switch-when="done")
+    include ./_done
+  div(ng-switch-when="favorite")
+    include ./_favorite
+  div(ng-switch-when="find")
+    include ./_find
+  div(ng-switch-when="history")
+    include ./_history
+  div(ng-switch-when="unearth")
+    include ./_unearth
+  div(ng-switch-default)
+    include ./_inbox

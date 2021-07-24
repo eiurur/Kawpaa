@@ -1,0 +1,834 @@
+@charset "utf-8";
+
+/**
+ * つらい
+ */
+$retweet-color: #5c913b;
+$star-color: #ffac33;
+$favorite-color: #f2446f;
+$download-color: #29a7e1;
+
+/**
+ *
+ */
+.inherit-link {
+  color: inherit;
+}
+*:focus {
+  outline: none;
+}
+
+/**
+ * <a href="https://github.com/AllThingsSmitty/css-protips/tree/master/translations/ja-JP" target="_blank">css-protips/translations/ja-JP at master · AllThingsSmitty/css-protips</a>
+ * リンクのhref属性にはURLがあり、リンクのテキストがない場合に、下記のCSSを使用すると、リンク先のURLを表示します。
+ */
+a[href^='http']:empty::before {
+  content: attr(href);
+}
+
+div.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/**
+ * fa
+ */
+
+.icon-retweet {
+  cursor: pointer;
+  &:hover {
+    color: $retweet-color !important;
+  }
+}
+
+.retweeted {
+  color: $retweet-color !important;
+}
+
+.icon-star {
+  cursor: pointer;
+  &:hover {
+    color: $star-color !important;
+  }
+}
+
+.favorited {
+  color: $favorite-color !important;
+}
+
+.fa-download {
+  &:hover {
+    color: $download-color !important;
+  }
+}
+
+.fa__size--sm {
+  font-size: 16px;
+}
+
+.fa-icon-list:before {
+  padding-right: 16px;
+}
+
+.zurui-icon {
+  font-size: 130%;
+  margin-right: 5px;
+  color: rgba($text-color, 0.5);
+  position: relative;
+  top: 2px;
+}
+
+.zurui-icon-right {
+  font-size: 130%;
+  margin-left: 5px;
+  position: relative;
+  top: 2px;
+}
+.label-with-icon .fa {
+  padding-right: 6px;
+  font-size: 110%;
+}
+
+/**
+ *
+ */
+.no-link {
+  pointer-events: none;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.not-clickable {
+  cursor: not-allowed;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/**
+ * Toaster
+ */
+#toast-container {
+  font-size: 16px;
+}
+
+/**
+ * Aside slider
+ */
+.fullscreen-overlay {
+  position: fixed;
+  z-index: $z-index--fullscreen-overlay;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  width: 100%;
+  height: 100%;
+
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.scrollbar-y-hidden {
+  overflow-y: hidden;
+}
+
+/**
+ * center
+ */
+.image--center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/**
+ * image zoom viewer
+ */
+.image-layer {
+  display: none;
+
+  &__counter {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.6);
+    top: 0;
+    left: 0;
+    padding: 2rem 3rem;
+    cursor: pointer;
+    z-index: 100000;
+  }
+
+  &__background {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+
+  &__overlay {
+    position: fixed;
+    display: inline-block;
+
+    z-index: $z-index--image-layer__overlay;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0.95);
+  }
+
+  &__img {
+    z-index: $z-index--image-layer__img;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100000;
+
+    transition: transform ease 0.3s, height ease 0.1s, width ease 0.1s;
+  }
+
+  #video {
+    width: calc(100vw - 30vw);
+    height: 100%;
+    outline: none;
+    cursor: pointer;
+    z-index: 100000;
+  }
+
+  &__caption {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 0 2rem;
+    margin-right: auto;
+  }
+
+  &-control {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: white;
+    height: 6rem;
+    z-index: 1400002;
+
+    padding: 0 16px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background: $item-bg-color;
+    color: $text-color;
+    position: fixed;
+    right: 0;
+
+    span.clickable {
+      transition: 0.3s ease all;
+      padding: 0 2rem;
+      flex-shrink: 0;
+      &:hover {
+        color: white;
+      }
+    }
+  }
+
+  &__loading {
+    vertical-align: middle;
+    text-align: center;
+    position: absolute;
+    img {
+      position: absolute;
+      width: 50px;
+      z-index: $z-index--image-layer__loading--img;
+    }
+  }
+
+  &__img-vertically-long {
+    width: auto;
+    height: 80%; // captionをつけるとき
+    // height: 100%; // captionをつけないとき
+    margin: 0 auto;
+  }
+
+  &__img-horizontally-long {
+    width: 80%; // captionをつけるとき
+    // width: 100%; // captionをつけないとき
+    height: auto;
+  }
+
+  &__container {
+    display: flex;
+    height: calc(100% - 6rem);
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+
+  &__prev {
+    @include page-arrow(-10px);
+    top: 0;
+    left: 0;
+    height: calc(100% - 6rem);
+  }
+
+  &__next {
+    @include page-arrow(10px);
+    top: 0;
+    right: 0;
+    height: calc(100% - 6rem);
+  }
+}
+
+img.image-layer__img--max-width {
+  width: 100%;
+}
+
+img.image-layer__img--max-height {
+  height: 100%;
+}
+
+.top-unearth {
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 1rem;
+  margin-bottom: 15px;
+  a {
+    width: 100%;
+  }
+  .item {
+    position: relative;
+    width: 196px;
+    min-width: 196px;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1rem;
+    & + .item {
+      margin-left: 1.5rem;
+    }
+    img {
+      overflow: hidden;
+      cursor: pointer;
+      object-fit: cover;
+      object-position: top;
+      width: 100%;
+      height: 196px;
+      z-index: 10;
+      background-color: $item-bg-color;
+      border-radius: 1rem;
+    }
+  }
+  .img-overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 300;
+    border-radius: 1rem;
+    transition: background 0.25s ease;
+    &:hover {
+      background: rgba(0, 0, 0, 0);
+      &:before {
+        transform-origin: left;
+        transform: scaleX(1);
+      }
+    }
+    &:before {
+      content: '';
+      background: black;
+      position: absolute;
+      bottom: 1.5rem;
+      left: 0;
+      width: 120px;
+      height: 2.5rem;
+      transition: transform 0.5s;
+      transform-origin: right;
+      transform: scaleX(0);
+    }
+    &:after {
+      content: attr(data-years-ago) '年前';
+      font-weight: bold;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      position: absolute;
+      color: #b5b5b5;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .image-layer {
+    & span.clickable {
+      text-align: center;
+      font-size: 1.5rem;
+      flex-shrink: 1;
+    }
+    &__caption {
+      display: none;
+    }
+  }
+}
+
+/**
+ *
+ */
+@mixin feeding-arrow {
+  position: absolute;
+  top: 50%;
+  transition: all 0.25s ease;
+}
+
+.feeding-arrow--left {
+  @include feeding-arrow();
+  left: 32px;
+}
+
+.feeding-arrow--right {
+  @include feeding-arrow();
+  right: 32px;
+}
+
+/**
+ * Go to top
+ */
+.arrow-top {
+  position: fixed;
+  right: 50px;
+  bottom: 15px;
+
+  padding: 25px;
+
+  cursor: pointer;
+  transition: 0.24s;
+
+  border: solid transparent;
+  box-shadow: $link-color 1px -1px 0 0 inset;
+
+  transform: rotate(135deg);
+}
+
+.arrow-top:hover {
+  box-shadow: 1px -1px 0 0 lighten($link-color, 10%) inset;
+}
+
+/**
+ * Load画面
+ */
+@keyframes spinner1 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinner2 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.spinner {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+
+  width: 34px;
+  height: 34px;
+  margin-top: -17px;
+  margin-left: -17px;
+  &:after,
+  &:before {
+    position: fixed;
+
+    width: 32px;
+    height: 32px;
+
+    content: '';
+
+    border: 2px solid $theme-color;
+  }
+  &:after {
+    animation: spinner1 2.5s linear infinite;
+  }
+  &:before {
+    width: 44px;
+    height: 44px;
+    margin-top: -6.5px;
+    margin-left: -6.5px;
+
+    animation: spinner2 2.5s linear infinite;
+  }
+}
+
+.cover-until-authenticated {
+  height: 100%;
+
+  background: url('../images/login-background.jpg') no-repeat center center;
+  background-size: cover;
+}
+
+/**
+ * Filter for img
+ */
+.filter {
+  // ref https://www.webprofessional.jp/how-to-build-your-own-progressive-image-loader/
+  filter: blur(1vw);
+  // ページの大きさに関係なく確実に同じようにぼやけて見えるように
+  // transform: scale(1.05); // 画像のぼやけた外縁部分からページの背景色が透けないように
+}
+.edge {
+  overflow: hidden;
+}
+/* *
+ * Scroll */
+.scrollable {
+  overflow-y: scroll;
+  height: 75vh;
+  margin: 20px 0;
+  border-left: 1px solid $theme-color;
+}
+.stylish-scrollbar::-webkit-scrollbar {
+  width: 1px;
+  background-color: transparant;
+}
+.stylish-scrollbar::-webkit-scrollbar-thumb {
+  background-color: $theme-color;
+}
+/* *
+ * Button */
+@media (max-width: 480px) {
+  .btn-stretch {
+    width: 100%;
+  }
+}
+
+/* *
+ * Description */
+.description {
+  margin: 50px 0;
+  font-size: 100%;
+  img {
+    margin: 20px 0;
+    width: 100%;
+    max-width: 1280px;
+  }
+}
+.description__section {
+  border-bottom: 1px solid #dadada;
+  color: darken($text-color, 5%);
+  padding-bottom: 10px;
+}
+/* *
+ * Footer */
+// Go to Top
+$footer__input-wrapper--margin: 8px;
+.footer__buttons-wrapper {
+  text-align: center;
+  bottom: 10px - $footer__input-wrapper--margin;
+  right: 10px;
+  position: fixed;
+  z-index: $z-index--footer__buttons-wrapper;
+  font-size: 100%;
+}
+.footer__buttons {
+  position: relative;
+  & .button {
+    width: 3em;
+    height: 3em;
+    line-height: 3em;
+    vertical-align: middle;
+    border-radius: 100%;
+    box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.25);
+    background: #1c1d22;
+  }
+}
+.footer__input-wrapper {
+  margin-bottom: $footer__input-wrapper--margin;
+}
+.fa-circle {
+  color: $text-color;
+  & + .fa-angle-up {
+    color: $main-color;
+    transition: 0.3s ease-in-out all;
+    &:hover {
+      color: darken($main-color, 50%);
+    }
+  }
+  & + .fa-plus {
+    color: $main-color;
+  }
+}
+
+.selectable-buttons {
+  margin: 3rem 0 1rem;
+  padding-bottom: 3rem;
+  .button {
+    border: 1px solid $item-bg-color;
+    padding: 0.2rem 2rem;
+    border-radius: 2rem;
+    background-color: $item-bg-color;
+    color: #646464;
+
+    line-height: 1.6;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    &:hover {
+      border: 1px solid $accent-color;
+      color: white;
+    }
+    &--active {
+      border: 1px solid #646464;
+      background-color: #646464;
+      color: white;
+    }
+  }
+}
+
+.selectable-buttons .button:not(:first-of-type) {
+  border-radius: 0;
+}
+
+.selectable-buttons .button:first-of-type {
+  border-radius: 2rem 0 0 2rem;
+}
+
+.selectable-buttons .button:last-of-type {
+  border-radius: 0 2rem 2rem 0;
+}
+
+.switchable-button {
+  margin: 3rem 0 1rem;
+  border-bottom: 1px solid #464646;
+  padding-bottom: 3rem;
+  .button {
+    border: 1px solid $item-bg-color;
+    padding: 0.2rem 3rem;
+    background-color: $item-bg-color;
+    color: #646464;
+    line-height: 1.8;
+    margin-right: 2rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    &:hover {
+      border: 1px solid #646464;
+      background-color: #646464;
+      color: white;
+    }
+    &--active {
+      border: 1px solid #646464;
+      background-color: #646464;
+      color: white;
+    }
+  }
+}
+
+.scrollable-x {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  overflow-scrolling: touch;
+  transition: color 0.3s ease;
+
+  &::-webkit-scrollbar-track {
+    border-radius: 12px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(121, 121, 121, 0.1);
+    border-radius: 12px;
+  }
+  &::-webkit-scrollbar {
+    height: 12px;
+  }
+  &:hover::-webkit-scrollbar-thumb {
+    background-color: #777;
+  }
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.toggle {
+  input {
+    position: absolute;
+    left: -9999px;
+  }
+
+  label {
+    display: block;
+    position: relative;
+    margin: 1em;
+    padding: 15px 30px 15px 62px;
+    border: 1px solid #fff;
+    border-radius: 100px;
+    color: #fff;
+    background-color: #6a8494;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    transition: background-color 0.2s, box-shadow 0.2s;
+  }
+
+  label::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 10px;
+    width: 32px;
+    border: 1px solid #fff;
+    border-radius: 100px;
+    transition: background-color 0.2s;
+  }
+
+  label:hover,
+  input:focus + label {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+  }
+
+  input:checked + label {
+    background-color: #ab576c;
+  }
+
+  input:checked + label::before {
+    background-color: #fff;
+  }
+}
+
+.recommends {
+  position: sticky;
+  top: 15px;
+
+  .recommend {
+    position: relative;
+    contain: content;
+    transition: opacity 0.5s ease;
+  }
+  .recommend:after {
+    opacity: 0;
+  }
+  .recommend:hover:after {
+    opacity: 1;
+    content: attr(data-title);
+    position: absolute;
+    background: rgba(250, 100, 150, 0.8);
+    color: white;
+    left: 0;
+    right: 0;
+    padding: 0.5rem;
+    font-size: 16px;
+    bottom: 24px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    border-radius: 0 0 1rem 1rem;
+  }
+  img {
+    border-radius: 1rem;
+    margin-bottom: 24px;
+    width: 100%;
+  }
+}
+// https://codepen.io/raubaca/pen/ONzBxP/
+.common {
+  input[type='checkbox'],
+  input[type='radio'] {
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+  }
+  label {
+    color: #666666;
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+    padding-left: 30px;
+    padding-right: 10px;
+    line-height: 36px;
+    cursor: pointer;
+    z-index: 2;
+  }
+  label::before {
+    content: ' ';
+    position: absolute;
+    top: 6px;
+    left: 0;
+    display: block;
+    width: 24px;
+    height: 24px;
+    border: 2px solid #646464;
+    border-radius: 4px;
+    z-index: -1;
+  }
+  input[type='radio'] + label::before {
+    border-radius: 18px;
+  }
+  /* Checked */
+  input[type='checkbox']:checked + label,
+  input[type='radio']:checked + label {
+    padding-left: 10px;
+    color: #fff;
+  }
+  input[type='checkbox']:checked + label::before,
+  input[type='radio']:checked + label::before {
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: #646464;
+  }
+  /* Transition */
+  label,
+  label::before {
+    -webkit-transition: 0.25s all ease;
+    -o-transition: 0.25s all ease;
+    transition: 0.25s all ease;
+  }
+}
+
+/**
+ * Uitils
+ */
+.p-0 {
+  padding: 4px;
+}
+.w100 {
+  width: 100%;
+}

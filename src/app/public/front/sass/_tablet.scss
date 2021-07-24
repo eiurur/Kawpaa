@@ -1,0 +1,69 @@
+@media (max-width: 992px) {
+  nav {
+    display: block;
+  }
+
+  .sidebar {
+    left: -($sidebar-width + $sidebar-add-width);
+  }
+
+  .login-container {
+    .label {
+      font-size: 4vw;
+    }
+    .hlabel {
+      font-size: 20vw;
+      line-height: 0.8em;
+      display: inline-block;
+      padding: 0.1em 0.2em;
+      .nopadding {
+        padding: 0;
+      }
+    }
+  }
+
+  .hero h1 {
+    margin: 70% 0 45px 0;
+  }
+
+  .site-main {
+    padding: 0px;
+    .section {
+      .dashboard {
+        margin: 0 auto;
+        width: 100%;
+        .media {
+          .retweet-user-icon {
+            position: absolute;
+            top: 34px;
+            left: 32px;
+            z-index: $z-index--retweet-user-icon;
+            .icon-img {
+              max-width: 22px;
+            }
+          }
+          .media-heading {
+            .name {
+              font-size: 0.8em;
+            }
+            .screen-name {
+              font-size: 0.8em;
+            }
+          }
+          .media-body {
+            .retweet-user {
+              font-size: 0.8em;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .item-control-header {
+    height: 120px; // ロゴの高さに合わせる
+    top: 0;
+    left: 0;
+    right: 0;
+  }
+}

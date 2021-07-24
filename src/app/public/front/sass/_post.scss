@@ -1,0 +1,213 @@
+@charset "utf-8";
+
+.post {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__side-menu {
+    position: fixed;
+    right: 0;
+    bottom: 50%;
+    padding: 1rem;
+    color: white;
+    background: rgba(128, 128, 128, 0.5);
+    z-index: 12000;
+    border-radius: 1rem;
+
+    i {
+      cursor: pointer;
+    }
+  }
+
+  &__controls {
+    display: flex;
+    align-items: center;
+    padding-bottom: 24px;
+
+    /* reset selector */
+    .selectable-buttons {
+      margin: 0;
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+    .switchable-button {
+      margin: 0;
+      border-bottom: none;
+      padding-bottom: 0;
+      height: 27px;
+    }
+    .post__control {
+      height: 27px;
+    }
+  }
+  &__controls > div {
+    padding-right: 2rem;
+  }
+
+  // width: 100%しないと拡大したときimgが横幅一杯にならない。
+  // text-alignをつけないとimgが中央表示にならない。
+  &__img__container {
+    text-align: center;
+    z-index: $z-index--posts__container;
+  }
+
+  iframe {
+    width: 100%;
+    height: 90vh;
+  }
+
+  img {
+    width: 100%;
+    cursor: pointer;
+    transition: transform ease 0.3s;
+  }
+
+  img.width--wide {
+    height: calc(100vh - 4rem);
+    width: auto;
+  }
+  img.height--wide {
+    width: auto;
+    height: calc(100vh - 4rem);
+    margin: auto;
+  }
+
+  &__wrapper {
+    padding: 24px 0; // タイトルとpaginationが隠れるのでコメントアウト
+
+    .multi {
+      margin-bottom: 24px;
+    }
+
+    .active img {
+      box-shadow: 0 10px 20px rgba(255, 255, 255, 0.19), 0 6px 6px rgba(255, 255, 255, 0.23);
+    }
+    .post__text__container {
+      background: $item-bg-color;
+      color: $text-color;
+      border-radius: 1rem;
+      padding: 1rem 2rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  &__control {
+    & i {
+      font-size: 3rem;
+      &:not(:last-child) {
+        margin-right: 2rem;
+      }
+    }
+  }
+
+  &__container {
+    width: 100%;
+    font-size: 100%;
+    color: $text-color;
+    line-height: 1.8;
+
+    h1,
+    h2 {
+      border-bottom: 1px solid $text-color;
+      padding-bottom: 8px;
+      margin-bottom: 24px;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 2rem; // CAUTION: paddingだと横のpaddingを打ち消すので明示的にbottomを指定する。
+
+    .prev {
+      flex: 1;
+    }
+    .next {
+      flex: 1;
+      display: flex;
+
+      &__link {
+        margin-left: auto;
+      }
+    }
+  }
+}
+
+/* 関連情報 */
+.relative-info {
+  &__container {
+    line-height: 1.8;
+    font-size: 2rem;
+
+    & .thumbail {
+      object-fit: cover;
+      width: 100%;
+      height: 128px;
+      margin-top: 2rem;
+    }
+
+    & section {
+      margin-top: 2rem;
+    }
+  }
+
+  &__post {
+    display: inline;
+  }
+
+  &__time {
+    color: $theme-color;
+    border-bottom: 1px solid $theme-color;
+  }
+}
+
+.post__detail {
+  padding: 8px 0;
+  background: #222;
+  width: 100%;
+  float: left;
+}
+
+.post__control--container {
+  color: $fa-color;
+}
+
+.post__title {
+  word-break: break-word;
+  width: 100%;
+  padding-bottom: 2rem; // CAUTION: paddingだと横のpaddingを打ち消すので明示的にbottomを指定する。
+
+  &__anker {
+    color: $fa-color;
+    &:hover {
+      color: white;
+    }
+  }
+
+  &__image {
+    overflow: hidden;
+    white-space: nowrap;
+    max-height: 35px;
+    width: 100%;
+  }
+}
+
+/******************************************
+ * Muti
+ */
+
+.original-links {
+  margin: 3rem 0;
+}
+.original-link {
+  word-break: break-word;
+  width: 100%;
+  margin-bottom: 1rem;
+  &__anker {
+    color: $fa-color;
+    &:hover {
+      color: white;
+    }
+  }
+}

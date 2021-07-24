@@ -1,0 +1,81 @@
+@charset "utf-8";
+
+/**
+ * サービス全体用のスタイル
+ *
+ * commonsは使い回し用のスタイル。
+ * これはページ全体かつサービス専用のスタイル。
+ */
+.site-main {
+  margin: 0 auto;
+  position: relative;
+  padding-left: $sidebar-width + 20px - ($sidebar-add-width / 2);
+  padding-bottom: 30px;
+
+  .section {
+    background-color: $main-color;
+
+    .dashboard {
+      margin: 0 auto;
+      height: 100%;
+      color: $text-color;
+    }
+  }
+}
+
+.dashboard__message--empty {
+  width: 100%;
+  margin: 60px 0;
+  text-align: center;
+}
+
+.h100per {
+  height: 100%;
+
+  // tooltipを表示させる以下を使用
+  // tooltipを表示させるために.item__contentのoverflow: hiddenを削除
+  // -> ページ全体のscroll-xが有効化
+  // -> 無効化するために以下を追加
+  // overflow-x: hidden;
+}
+
+.search-condition__container {
+  max-width: 320px;
+  position: fixed;
+  right: 72px;
+  bottom: 12px;
+  z-index: $z-index--search-condition__container;
+  background: #1c1d22;
+  padding: 1rem;
+  margin-right: 1rem;
+  border-radius: 6px;
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.25);
+
+  & select {
+    min-width: 100%;
+    padding: 8px;
+  }
+  & .form-group {
+    margin-bottom: 1rem;
+  }
+  & .form-group:last-child {
+    margin-bottom: 0;
+  }
+
+  &__overlay {
+    position: fixed;
+    z-index: $z-index--search-condition__container - 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    width: 100%;
+    height: 100%;
+
+    background: rgba(0, 0, 0, 0);
+  }
+}

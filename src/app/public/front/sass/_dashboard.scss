@@ -1,0 +1,84 @@
+@charset "utf-8";
+
+.dashboard {
+  &__container {
+  }
+
+  &__controls {
+    border-bottom: 1px solid #464646;
+    margin: 3rem 0 1rem;
+  }
+  &__post {
+    font-size: 1.5rem;
+    position: absolute;
+    max-width: 540px;
+    visibility: hidden;
+    margin: 32px 0;
+    background: $base-color;
+    opacity: 0;
+    transition: outline ease-in 0.2s, opacity ease-in 0.2s;
+    &.show {
+      visibility: visible;
+      opacity: 1;
+    }
+    &:hover {
+      outline: 1px solid $theme-color;
+    }
+
+    &__header {
+      padding: 16px;
+    }
+
+    &__body {
+      line-height: 1.8;
+      margin: 16px;
+    }
+
+    &__description {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+
+    &__user {
+      color: $text-color;
+    }
+
+    &__footer {
+      color: $text-color;
+      padding: 0 16px 16px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__user {
+      text-align: right;
+    }
+    &__via {
+      text-align: right;
+      height: 100%;
+      img {
+        height: 16px;
+      }
+    }
+  }
+
+  &__link {
+    color: $text-color;
+    cursor: pointer;
+    text-decoration: none;
+    &:hover {
+      color: white;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    cursor: pointer;
+  }
+  &__loading {
+    display: flex;
+    justify-content: center;
+    padding: 16px 0 32px;
+  }
+}

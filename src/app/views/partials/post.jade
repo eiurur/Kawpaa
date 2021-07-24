@@ -1,0 +1,26 @@
+.post__wrapper
+  section
+    .col-md-12.col-xl-9
+      .post
+        post-container.post__container.image--center(
+          type="post.type",
+          src="post.images.original",
+          id="post._id",
+          link="post.siteUrl",
+          content="post.content"
+          videos="post.videos")
+
+    .col-md-12.col-xl-3
+      .relative-info__container
+        .row
+          .col-md-2.col-xl-12.post__pagination
+            a.prev(href="/post/{{::pageType}}/{{post.prev._id}}", ng-if="post.prev != null")
+              span.link < prev
+            a.next(href="/post/{{::pageType}}/{{post.next._id}}", ng-if="post.next != null")
+              span.next__link next > 
+          .col-md-10.col-xl-12
+            .post__title
+              a.post__title__anker(href="{{::post.siteUrl}}", target="_blank", rel="noopener nofollow") {{::post.title}}
+        post-control-container(page-type='::pageType', post-object-id="::postObjectId", post="::post")
+        .col-md-12
+          done-post-history(post-object-id="::postObjectId")

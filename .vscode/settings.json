@@ -1,0 +1,7 @@
+{
+  "git.ignoreLimitWarning": true,
+  "search.exclude": {
+    "**/build": true
+  },
+  "html.format.wrapLineLength": 160
+}

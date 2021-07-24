@@ -1,0 +1,153 @@
+.stats__hostname__container {
+  font-size: 1.6rem;
+
+  .table-hover > tbody > tr:hover > td,
+  .table-hover > tbody > tr:hover > th {
+    background: none;
+    color: white;
+  }
+}
+
+.stats {
+  &__container {
+    margin: 3rem 0;
+  }
+  &__section {
+    padding: 2rem 0;
+    &:first-of-type {
+      padding-top: 0;
+    }
+    &:last-of-type {
+      padding-bottom: 0;
+    }
+  }
+  &__header {
+    color: white;
+    font-size: 3rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  &__message {
+    font-size: 2rem;
+    color: #777;
+  }
+}
+
+.counter {
+  &__container {
+    position: relative;
+    height: 320px;
+    margin-bottom: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-shadow: 0 1px 1px #000;
+  }
+
+  &__overlay {
+    background: $sidebar-color;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border-radius: 2rem;
+    z-index: 300;
+  }
+
+  &__text {
+    text-align: start;
+    position: absolute;
+    z-index: 400;
+  }
+
+  &__type {
+    color: #777;
+  }
+
+  &__count {
+    &--emphasize {
+      font-size: 2.5em;
+    }
+  }
+}
+
+.years {
+  width: 960px;
+  display: flex;
+  padding-bottom: 1rem;
+
+  &__container {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overflow-scrolling: touch;
+    cursor: ew-resize;
+    transition: color 0.3s ease;
+
+    &::-webkit-scrollbar-track {
+      border-radius: 12px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(121, 121, 121, 0.1);
+      border-radius: 12px;
+    }
+    &::-webkit-scrollbar {
+      height: 12px;
+    }
+    &:hover::-webkit-scrollbar-thumb {
+      background-color: #777;
+    }
+  }
+
+  &__item {
+    height: 320px;
+    min-width: 50%;
+    position: relative;
+    margin: 1rem;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-shadow: 0 1px 1px #000;
+
+    &:first-of-type {
+      margin: 1rem 1rem 1rem 0;
+    }
+
+    &:last-of-type {
+      margin: 1rem 0 1rem 1rem;
+    }
+  }
+
+  &__image {
+    height: 100%;
+    border-radius: 2rem;
+  }
+
+  &__text {
+    z-index: 400;
+    text-align: center;
+    position: absolute;
+    word-break: break-all;
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 300;
+    border-radius: 2rem;
+    transition: background 0.25s ease;
+    &:hover {
+      background: rgba(0, 0, 0, 0.4);
+    }
+  }
+}

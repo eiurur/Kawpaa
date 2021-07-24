@@ -1,0 +1,26 @@
+section.col-md-12
+  .row
+    .unearth__wrapper.flexible.col-sm-12.col-md-10.col-lg-10.col-xl-10.col-xxl-10
+      .unearth__controls.bottom
+        unearth-type-changer
+      .row.unearth__container
+        div(ng-if="ready")
+          item-control-header(page-type='pageType', posts="postList")
+          zoom-image-viewer(page-type='pageType', posts="postList.items")
+          span(ng-repeat='post in postList.items', ng-if="postList.items.length != 0")
+            div(ng-if="$index == 0")
+              .col-md-12.break-line
+                h3(id="{{post.ago}}") {{post.ago}}年前
+            div(ng-if="$index != 0")
+              .col-md-12.break-line(ng-if="postList.items[$index-1].ago != post.ago")
+                h3(id="{{post.ago}}") {{post.ago}}年前
+            .item__container.col-xs-6.col-sm-4.col-md-3.col-lg-3.col-xl-1.col-xxl-1
+              include ../parts/item/item_controls/unearth/_post
+          .col-md-12.text-center(ng-if="postList.items.length == 0")
+            p.note
+              | Empty ...
+        div(ng-if="!ready")
+          include ../parts/_puff_loader
+      .unearth__controls.top
+        unearth-type-changer
+    recommend-list.flexible.hidden-sm.col-md-2.col-lg-2.col-xl-2.col-xxl-2.recommends

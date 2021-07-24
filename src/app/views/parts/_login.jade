@@ -1,0 +1,132 @@
+.login-container.h100per
+  header.h100per
+    section.hero.h100per
+      .texture-overlay
+      .container
+        .nav-wrapper
+          .col-md-6.col-sm-6.col-xs-6.text-left
+            a.logo-link(href='#')
+              | Kawpaa
+        .hero__content
+          .col-md-12
+            h1.animated.fadeInDown あとで抜く
+              aside.site-a-word-description ためて、たまるウェブサービス
+            a.use-btn.animated.fadeInUp(href='/auth/twitter/callback', target='_self') 使ってみる (無料)
+            a.learn-btn.animated.fadeInUp(scroll-to='#about', scroll-on-click)
+              | もっと詳しく
+              i.fa.fa-arrow-down
+
+  section#about.features-list.section-container
+    .container
+      .row
+        .col-md-12
+          .section-title
+            | 特徴
+          hr.section-line
+        .col-md-12
+          .col-md-4.feature-box
+            .feature-icon
+              i.fa.fa-3x.fa-cloud-upload
+            .feature-content
+              h1 Easily saving
+              p
+                a(href="https://chrome.google.com/webstore/detail/save-to-kawpaa/dghanpofbgihidnoofloojkpbkgjkfgg", target="_blank", rel="noopener nofollow") ChromeExtension
+                | を使って、抜きたい画像やWebページを少ないステップで保存できます。
+          .col-md-4.feature-box
+            .feature-icon
+              i.fa.fa-3x.fa-bar-chart
+            .feature-content
+              h1 Statistics
+              p
+                | これまでに抜いたコンテンツが全て記録できます。
+          .col-md-4.feature-box
+            .feature-icon
+              i.fa.fa-3x.fa-heart
+            .feature-content
+              h1 Free
+              p
+                | 無料です。Twitterアカウントさえあればすぐにご利用できます。
+
+  section#support.support-list.section-container
+    .container
+      .row
+        .col-md-12
+          .section-title
+            | 対応サイト
+          hr.section-line
+        .col-md-12
+          .col-md-6
+            img(src="front/images/login/support_sites.jpg")
+          .col-md-6.support__desciption
+            p
+              特定のサイトではより簡単に登録できます。
+              br
+              非対応サイトでもコンテキストメニューから自由に登録できます。
+            ul
+              li
+                i.fa.fa-check.fa-check-ok.fa-with-text
+                | twitter
+              li
+                i.fa.fa-check.fa-check-ok.fa-with-text
+                | tweetdeck
+              li
+                i.fa.fa-check.fa-check-ok.fa-with-text
+                | tumblr
+              li
+                i.fa.fa-check.fa-check-ok.fa-with-text
+                | pixiv
+              li
+                i.fa.fa-check.fa-check-ok.fa-with-text
+                | Danbooru
+              li
+                i.fa.fa-check.fa-check-ok.fa-with-text
+                | yande.re
+              li
+                i.fa.fa-check.fa-check-ok.fa-with-text
+                | Sankaku Complex
+            p
+              | and more...
+
+  section#sample.sample-list.section-container
+    .row.row-reset
+      .col-md-12
+        .section-title
+          | スクリーンショット
+        hr.section-line
+      .col-md-offset-1.col-md-10.col-md-offset-1
+        .col-md-6
+          figure
+            figcaption
+              | 基本画面
+          img(src="front/images/login/pc.jpg")
+        .col-md-6
+          figure
+            figcaption
+              | 個別表示画面
+          img(src="front/images/login/pc_post_s.jpg")
+      .col-md-offset-1.col-md-10.col-md-offset-1
+        .col-md-6
+          figure
+            figcaption
+              | 履歴画面
+          img(src="front/images/login/pc_history.jpg")
+        .col-md-6
+          figure
+            figcaption
+              | 統計画面
+          img(src="front/images/login/pc_stats.jpg")
+        
+
+  section#count.count-list.section-container
+    all-count-container
+
+  section#start.start-list.section-container
+    .container
+      .row
+        .col-md-12
+          p
+            a.use-btn(href='/auth/twitter/callback', target='_self') 使ってみる (無料)
+          p.note
+            | twitterアカウントがあればすぐに利用できます。
+            br
+            | ※ 勝手にツイートやフォローをすることありません。

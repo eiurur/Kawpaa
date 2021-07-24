@@ -1,0 +1,41 @@
+.col-md-12(ng-controller="DoneHistoryCtrl")
+  .flexible.col-sm-12.col-md-10.col-lg-10.col-xl-10.col-xxl-10
+    .dashboard(ng-if="isReady")
+      .col-sm-12.col-md-12.col-lg-12
+        .row
+          zoom-image-viewer(page-type='pageType', posts="postList.items")
+          #content
+            history-heatmap 
+            include ../parts/initial_pages/_factory
+            .history-container
+              ul.history
+                li.event(ng-repeat='activityByYYYYMMDD in postList.items')
+                  .history-date
+                    p.history-date-create
+                      time {{::activityByYYYYMMDD[0][0].createdAtFormatedYMD}}
+                  .history-items--by-date(ng-repeat='posts in activityByYYYYMMDD')
+                    .history-items.overflow-hidden
+                      .history__time
+                        span.clickable(open-done, title="新しいウィンドウで開く", posts="posts") 
+                          {{::posts[0].createdAtFormatedHHmm}}
+                      .item__wrapper.scrollable-x
+                        .history__medias(ng-repeat='post in posts')
+                          .history__media
+                            .media__wrapper
+                              img.media__img.media-object.thumbnail-img.media__image(
+                                ng-src='data/thumbnails/{{::post.donePost.fromImgSrc}}', 
+                                to-img-src='data/thumbnails/{{::post.donePost.toImgSrc}}', 
+                                img-src="data/images/{{::post.donePost.images.original}}", 
+                                id="{{::post._id}}", 
+                                pipe-low-to-high-image, open-zoom-image-viewer)
+                          .history__description
+                            .description__wrapper
+                              a.description__link(href="{{::post.donePost.siteUrl}}", target="_blank", rel="noopener nofollow", title="{{::post.donePost.title}} {{::post.donePost.description}}") {{::post.donePost.title}}
+
+      .col-sm-12.col-md-12.col-lg-12
+        .row(infinite-scroll='postList.nextPage()', infinite-scroll-disabled='postList.busy', infinite-scroll-distance='1')
+          span(ng-repeat='post in postList.items', ng-if="postList.items.length != 0")
+
+      span(ng-if="postList.busy")
+        include ../parts/_puff_loader
+  recommend-list.flexible.hidden-sm.col-md-2.col-lg-2.col-xl-2.col-xxl-2.recommends

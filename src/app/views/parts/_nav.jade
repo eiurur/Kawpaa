@@ -1,0 +1,50 @@
+nav.navbar-default.navbar-inverse
+  .navbar-header
+    button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+      span.sr-only Toggle navigation
+      span.icon-bar
+      span.icon-bar
+      span.icon-bar
+    a.navbar-brand(href='/') Kawpaa
+  #bs-example-navbar-collapse-1.collapse.navbar-collapse
+    ul.nav.navbar-nav.navbar-right
+      li.dropdown
+        a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+          | FIND
+          span.caret
+        ul.dropdown-menu
+          li.divider Find
+          li
+            a(href='/find/popular/days', is-active-nav) Days
+          li
+            a(href='/find/popular/weeks', is-active-nav) Weeks
+          li
+            a(href='/find/popular/months', is-active-nav) Months
+
+      li.dropdown
+        a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+          | YOUR
+          span.caret
+        ul.dropdown-menu
+          li
+            a(href='/', is-active-nav) Inbox
+          li
+            a(href='/archive', is-active-nav) Archive
+          li
+            a(href='/done', is-active-nav) Done
+          li
+            a(href='/favorite', is-active-nav) Favorite
+          li
+            a(href='/done/history', is-active-nav) History
+          li
+            a(href='/unearth', is-active-nav) Unearth
+          li
+            a(href='/stats', is-active-nav) Stats
+
+      li.dropdown
+        a.dropdown-toggle(href='#', data-toggle='dropdown', role='button', aria-haspopup='true', aria-expanded='false')
+          | ACCOUNT
+          span.caret
+        ul.dropdown-menu
+          li
+            a(href='/account', is-active-nav) @{{user.username}}

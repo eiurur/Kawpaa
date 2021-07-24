@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+/**
+ * 擬似的なチェックボックス(ボタンスタイル)
+ */
+.checkbox__container {
+  display: flex;
+
+  & li {
+    list-style: none;
+    margin-right: 15px;
+    flex-direction: row;
+    border: 1px solid #b0e4ea; //TODO
+    padding: 0.4rem 3rem;
+    border-radius: 4rem;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #b0e4ea; //TODO
+    transition: all ease 0.2s;
+
+    &:hover {
+      color: white; //TODO
+      background: #b0e4ea; //TODO
+    }
+
+    &[data-checked] {
+      color: black; //TODO
+    }
+  }
+}

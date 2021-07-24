@@ -1,0 +1,191 @@
+@charset "utf-8";
+
+/**
+ * Bootstrap の 上書き
+ */
+.media-body {
+  font-size: 16px;
+  color: #333;
+}
+
+.media__divider {
+  margin: 20px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: rgba(255, 255, 255, 0.5) 0 1px 0 inset;
+}
+
+// item_continarのmargin: 8pxのせいでtabの横側とずれが生じてて気持ち悪いから相殺させる。
+.tab-content > .active {
+  margin: -8px;
+}
+
+/**
+ * Bootstrap の上書き
+ * (無効化)
+ */
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  background-color: transparent;
+  border: none;
+  border-bottom-color: transparent;
+}
+
+// input form
+.input-group {
+  &-addon,
+  &-btn > button {
+    color: $text-color;
+    border-color: $control-border-color;
+    background: #2a2b30;
+    border-radius: 0;
+    transition: 0.2s all ease;
+  }
+  &-btn > button:hover,
+  &-btn > button:active {
+    background: $control-border-color;
+    color: #2a2b30;
+  }
+  & > select {
+    padding-bottom: 4px;
+  }
+}
+
+/**
+ *
+ */
+@media (min-width: 768px) {
+  .flexible {
+    &.col-sm-12 {
+      width: 100%;
+    }
+  }
+}
+
+@media (min-width: 992px) {
+  .flexible {
+    &.col-md-10 {
+      width: 80%;
+    }
+    &.col-md-2 {
+      width: 20%;
+    }
+  }
+}
+@media (min-width: 1200px) {
+  .flexible {
+    &.col-lg-10 {
+      width: 80%;
+    }
+    &.col-lg-2 {
+      width: 20%;
+    }
+  }
+}
+@media (min-width: 3000px) {
+  .col-xxl-12 {
+    width: 100%;
+  }
+  .col-xxl-10 {
+    width: 80%;
+  }
+  .col-xxl-9 {
+    width: 75%;
+  }
+  .col-xxl-4 {
+    width: 33.33333333%;
+  }
+  .col-xxl-3 {
+    width: 25%;
+  }
+  .col-xxl-2 {
+    width: 16.666666%;
+  }
+  .col-xxl-1 {
+    width: 8.3333%;
+  }
+
+  .flexible {
+    &.col-xxl-10 {
+      width: 85%;
+    }
+    &.col-xxl-2 {
+      width: 15%;
+    }
+  }
+}
+
+.row-eq-height {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+$screen-xl-min: 1920px;
+
+.visible-xl {
+  display: none !important;
+}
+
+.visible-xl-block,
+.visible-xl-inline,
+.visible-xl-inline-block {
+  display: none !important;
+}
+
+.visible-xl {
+  @media (min-width: $screen-xl-min) {
+    display: block !important;
+  }
+}
+.visible-xl-block {
+  @media (min-width: $screen-xl-min) {
+    display: block !important;
+  }
+}
+.visible-xl-inline {
+  @media (min-width: $screen-xl-min) {
+    display: inline !important;
+  }
+}
+.visible-xl-inline-block {
+  @media (min-width: $screen-xl-min) {
+    display: inline-block !important;
+  }
+}
+
+.visible-xxl {
+  display: none !important;
+}
+
+.visible-xxl-block,
+.visible-xxl-inline,
+.visible-xxl-inline-block {
+  display: none !important;
+}
+
+/**
+ * xxl
+ */
+
+$screen-xxl-min: 2160px;
+
+.visible-xxl {
+  @media (min-width: $screen-xxl-min) {
+    display: block !important;
+  }
+}
+.visible-xxl-block {
+  @media (min-width: $screen-xxl-min) {
+    display: block !important;
+  }
+}
+.visible-xxl-inline {
+  @media (min-width: $screen-xxl-min) {
+    display: inline !important;
+  }
+}
+.visible-xxl-inline-block {
+  @media (min-width: $screen-xxl-min) {
+    display: inline-block !important;
+  }
+}

@@ -1,0 +1,56 @@
+span(ng-controller='MenuCtrl')
+  .sidebar(ng-class='{"openedMenu":isToggleMenu}')
+
+    .logo
+      a(href='/') Kawpaa
+
+    .main-nav
+      ul.nav-text
+        span
+          li.divider Find
+          li
+            a(href='/find/popular/days', is-active-nav)
+              i.fa.fa-fire.fa-icon-list.fa-fw
+              | Days
+            a(href='/find/popular/weeks', is-active-nav)
+              i.fa.fa-fire.fa-icon-list.fa-fw
+              | Weeks
+            a(href='/find/popular/months', is-active-nav)
+              i.fa.fa-fire.fa-icon-list.fa-fw
+              | Months
+
+          li.divider YOUR
+          li
+            a(href='/', is-active-nav)
+              i.fa.fa-inbox.fa-icon-list.fa-fw
+              | Inbox
+          li
+            a(href='/archive', is-active-nav)
+              i.fa.fa-check.fa-icon-list.fa-fw
+              | Archive
+          li
+            a(href='/done', is-active-nav)
+              i.fa.fa-tint.fa-icon-list.fa-fw
+              | Done
+          li
+            a(href='/favorite', is-active-nav)
+              i.fa.fa-heart.fa-icon-list.fa-fw
+              | Favorite
+          li
+            a(href='/done/history', is-active-nav)
+              i.fa.fa-history.fa-icon-list.fa-fw
+              | History
+          li
+            a(href='/unearth', is-active-nav)
+              i.fa.fa-recycle.fa-icon-list.fa-fw
+              | Unearth
+          li
+            a(href='/stats', is-active-nav)
+              i.fa.fa-th-large.fa-icon-list.fa-fw
+              | Stats
+
+          li.divider ACCOUNT
+          li
+            a(href='/account', is-active-nav) @{{user.username}}
+
+    include ./_share

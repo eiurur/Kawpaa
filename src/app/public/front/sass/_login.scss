@@ -1,0 +1,259 @@
+@charset "utf-8";
+
+// From Boxify(http://tympanus.net/Freebies/Boxify/)
+.hero {
+  position: relative;
+  padding: 60px 0 60px 0;
+  // min-height: 800px;
+  // background: rgb(40, 70, 102) url('../images/2015-10-31_19-44-33_j.jpg') no-repeat center center;
+  background: $login-bg-color url('../images/login/hero.jpg') no-repeat center center;
+  background-size: cover;
+  color: #fff;
+
+  &__content {
+    position: absolute;
+    bottom: 40vh;
+  }
+}
+
+.hero .logo-link {
+  color: #fff;
+}
+
+.hero h1 {
+  margin: 45px 0 45px 0;
+  font-weight: 300;
+  font-size: 45px;
+  color: #fff;
+
+  .site-a-word-description {
+    display: block;
+    font-size: 16px;
+    margin: 16px 0 0 8px;
+  }
+}
+
+.hero a {
+  &:hover,
+  &:focus {
+    color: $login-main-color;
+    text-decoration: none;
+  }
+  transition: all 0.3s ease-in-out;
+  transition-property: color, border-color, background-color;
+}
+
+.use-btn {
+  display: inline-block;
+  margin: 0 10px 10px 0;
+  padding: 20px 50px;
+  border-radius: 3px;
+  background-color: #fff;
+  color: $login-bg-color;
+  font-size: 16px;
+}
+
+.learn-btn,
+.download-btn {
+  display: inline-block;
+  padding: 18px 46px;
+  border: 2px solid #fff;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.use-btn:hover,
+.use-btn:focus {
+  background-color: $login-main-color;
+  color: #fff !important;
+  text-decoration: none;
+}
+
+.learn-btn:hover,
+.download-btn:hover,
+.learn-btn:focus,
+.download-btn:focus {
+  border-color: $login-main-color;
+  color: $login-main-color;
+  text-decoration: none;
+}
+
+.texture-overlay {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  background-image: url('../images/grid.png');
+}
+
+.login-container {
+  line-height: 1.6;
+  font-size: $largeFontSize;
+
+  & .section-title {
+    // margin: 0 0 4rem 0;
+  }
+
+  & .section-container {
+    padding: 12rem 0;
+    & h1 {
+      margin: 0 0 10px 0;
+      padding: 0;
+      color: #24374b;
+      font-size: 20px;
+    }
+
+    color: #4e9ba3;
+    text-align: center;
+
+    // 偶数
+    &:nth-child(odd) {
+      background: #f2f2f0;
+    }
+    // 奇数
+    &:nth-child(even) {
+      background: white;
+    }
+  }
+
+  & .section-line {
+    margin: 4rem auto 4rem auto;
+    width: 4rem;
+    border-top: 1px solid #fc5341;
+  }
+
+  & img {
+    width: 100%;
+  }
+
+  & figure {
+    padding: 8rem 0 2rem;
+  }
+
+  & p {
+    color: #778899;
+  }
+}
+
+/**
+ * icon fa
+ */
+.fa-with-text {
+  margin: 0 2rem 0 0;
+}
+.fa-check-ok {
+  color: #3ee678;
+}
+
+/**
+ * PATCH
+ */
+// スクリーンショットの部分、.rowを付与すると横幅がはみ出す。.rowがないとsectionがずれる。
+// FIXME: 一時的にリセットクラスを作成して対応
+.row-reset {
+  margin: 0;
+}
+
+/**
+ * Feature
+ */
+.features-list {
+  background: white;
+
+  p {
+    font-size: 14px;
+    line-height: 25px;
+  }
+  p,
+  pre {
+    margin: 1em 0;
+  }
+}
+
+.feature-box {
+  text-align: center;
+
+  & p {
+    text-align: left;
+  }
+}
+
+.feature-icon {
+  margin: 0 auto 1rem;
+  width: 90px;
+  height: 90px;
+  vertical-align: top;
+  text-align: center;
+  font-size: 25px;
+  line-height: 90px;
+}
+
+.feature-content {
+  display: inline-block;
+  width: 65%;
+}
+
+.feature-icon i {
+  color: $login-sub-color;
+}
+
+.features-list h1 {
+  margin: 0 0 10px 0;
+  padding: 0 0 1rem;
+  color: #24374b;
+  font-size: 20px;
+}
+
+.features-list p {
+  margin-bottom: 20px;
+  color: #778899;
+}
+
+/**
+ * Count
+ */
+.count-list {
+  &__count {
+    font-size: 4rem;
+  }
+}
+
+/**
+ * Support
+ */
+.support__desciption {
+  text-align: left;
+
+  & ul {
+    margin: 2rem 0;
+  }
+}
+
+/**
+ *
+ */
+.sample-list {
+  background: white;
+  color: #4e9ba3;
+  text-align: center;
+}
+
+/**
+  *
+  */
+.start-list {
+  background: black !important;
+  & .use-btn {
+    border: 2px solid $theme-color;
+    color: $theme-color;
+    background: transparent;
+    &:hover {
+      background: $theme-color;
+    }
+  }
+  & .note {
+    margin: 4rem 0 0;
+  }
+}

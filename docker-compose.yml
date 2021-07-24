@@ -1,0 +1,28 @@
+version: '3'
+services:
+  kawpaa-app:
+    container_name: kawpaa-app
+    restart: always
+    build: .
+    ports:
+      - '9021:9021'
+    links:
+      - kawpaa-redis
+      - kawpaa-mongo:mongodb
+    depends_on:
+      - kawpaa-redis
+      - kawpaa-mongo
+    volumes:
+      - ./volume/app/data:/var/www/myapp/data
+  kawpaa-mongo:
+    container_name: kawpaa-mongo
+    image: 'mongo:4'
+    volumes:
+      - ./volume/mongo/db:/data/db
+      - ./volume/mongo/configdb:/data/configdb
+  kawpaa-redis:
+    container_name: kawpaa-redis
+    image: 'redis:5.0.8'
+    # command: ['redis-server', '--bind', 'redis', '--port', '6379']
+    # volumes:
+    #   - './volume/redis/db:/data'

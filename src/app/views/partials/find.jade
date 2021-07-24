@@ -1,0 +1,11 @@
+.col-md-12(ng-controller='FindCtrl')
+  .section
+    .dashboard
+      term-pagination(term="term")
+      include ../parts/initial_pages/_factory
+      include ../parts/_post_container
+      span(ng-if="postList.items.length != 0")
+        item-control-header(page-type='pageType', posts="postList")
+        zoom-image-viewer(page-type='pageType', posts="postList.items")
+        term-pagination(term="term")
+

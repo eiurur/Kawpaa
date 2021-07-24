@@ -1,0 +1,52 @@
+.profile__container {
+  word-break: break-all;
+  word-wrap: break-word;
+  max-width: 640px;
+  @include plenty();
+  @include media();
+}
+
+.user-profile__conainter {
+  margin: 30px 0;
+  @include media();
+}
+
+.user-info__container {
+  max-width: 640px;
+}
+
+.import-export {
+  display: flex;
+  flex-direction: column;
+  & > div {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    & + div {
+      margin-top: 2rem;
+    }
+    i {
+      line-height: 1.4;
+      margin-right: 1rem;
+      display: none;
+    }
+  }
+  .download {
+    display: flex;
+    align-content: center;
+    &.disabled {
+      i {
+        display: flex;
+      }
+    }
+  }
+  .upload {
+    display: flex;
+    align-content: center;
+    &.disabled {
+      i {
+        display: flex;
+      }
+    }
+  }
+}

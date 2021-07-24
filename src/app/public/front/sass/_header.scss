@@ -1,0 +1,36 @@
+.header-container {
+  .header {
+    background: $sidebar-color;
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: $header-height;
+    transition: all, 0.25s, ease;
+    .mobile-menu-toggle {
+      cursor: pointer;
+      color: $accent-color;
+      position: absolute;
+      padding: 5px 15px;
+      top: 5px;
+      left: 5px;
+      transition: all, 0.25s, ease;
+      &:hover {
+        color: lighten($accent-color, 15%);
+      }
+    }
+  }
+}
+
+.overlay {
+  cursor: pointer;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.7);
+  width: 100%;
+  height: 100%;
+  z-index: $z-index--overlay;
+  transition: all, 0.25s, ease;
+}
+
+.openedMenu {
+  transform: translateX(190px);
+}

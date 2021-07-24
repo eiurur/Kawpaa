@@ -1,0 +1,14 @@
+doctype html
+html(ng-app="myApp", ng-cloak, ng-csp)
+  head
+    include ./parts/head/_meta
+    link(rel="manifest", href="manifest.json")
+    title Kawpaa
+    base(href='/')
+    include ./parts/head/_favicon
+    include ./parts/head/_style
+  body
+    block body
+
+
+  include ./parts/head/_script

@@ -1,0 +1,8 @@
+.col-md-12(ng-controller='PostListCtrl')
+  item-control-header(page-type='pageType', posts="postList")
+  zoom-image-viewer(page-type='pageType', posts="postList.items")
+  .section
+    .dashboard
+      include ../parts/_search_box
+      include ../parts/initial_pages/_factory
+      include ../parts/_post_container

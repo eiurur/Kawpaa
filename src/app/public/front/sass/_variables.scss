@@ -1,0 +1,99 @@
+@charset "utf-8";
+
+/**
+ * Sizes
+ */
+$margin: 0.5rem;
+$padding: 0.5rem;
+$layout-margin: 3rem;
+$layout-padding: 3rem;
+
+$header-height: 50px;
+
+// 合計で 210px がちょうどよい
+$sidebar-width: 170px;
+$sidebar-add-width: 10px;
+
+$item__control--line-height: 32px;
+$item__control--height: 32px;
+
+$entire-screen--top-margin: 20px;
+
+/**
+ * Histry
+ */
+$history-spacing: 50px;
+$history-padding: 12px;
+$history-radius: 4px;
+$history-date: 120px;
+$history-dotborder: 4px;
+$history-dot: 11px;
+$history-line: 4px;
+
+/**
+ * Fonts
+ */
+$smallFontSize: 8px;
+$baseFontSize: 16px;
+$largeFontSize: 24px;
+
+/**
+ * Colors
+ */
+$base-color: #252527;
+$base-sub-color: #323232;
+$text-color: #bec2bf;
+$accent-color: #73d0da;
+$theme-color: #73d0da;
+
+$img-theme-color: #73d0da;
+$link-theme-color: #fad97b;
+$video-theme-color: #fc7684;
+$text-theme-color: #54cc94;
+
+
+$sidebar-color: #1c1d22;
+$item-bg-color: #1c1d22;
+
+$divider-color: #cfcfcf;
+$menu-color: #bec2bf;
+$control-border-color: #bec2bf;
+
+$main-color: #2a2b30;
+
+$link-color: #2196f3;
+
+$section-color: #ddd;
+
+$item__by-color: #ddd;
+
+$clickable-text-color: #bbb;
+$clickable-text-hover-color: white;
+$clickable-text-active-color: $theme-color;
+$fa-color: #bbb;
+
+$login-main-color: #73d0da;
+$login-sub-color: #4e9ba3;
+$login-bg-color: #28444c;
+
+/**
+ * z-index
+ */
+$z-index--fullscreen-overlay: 3000;
+$z-index--shortcut-overlay: 10000000;
+$z-index--image-layer__overlay: 13000;
+$z-index--image-layer__img: 13001;
+$z-index--image-layer__loading: 140001;
+$z-index--image-layer__loading--img: 1400000;
+$z-index--footer__buttons-wrapper: 5000;
+$z-index--posts__container: 10001;
+$z-index--search-condition__container: 10000;
+$z-index--overlay: 8;
+$z-index--item__title: 300;
+$z-index--item__title-image: 300;
+$z-index--item__image: 10;
+$z-index--item__control: 300;
+$z-index--page-arrow: 1400001;
+$z-index--retweet-user-icon: 5;
+$z-index--sidebar: 10;
+$z-index--retweet-user-icon: 5;

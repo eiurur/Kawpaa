@@ -1,0 +1,7 @@
+img.item__image(
+  ng-src="data/thumbnails/{{::post.fromImgSrc}}", 
+  to-img-src='data/thumbnails/{{::post.toImgSrc}}', 
+  img-src="data/images/{{::post.images.original}}", 
+  id="{{::post._id}}", 
+  pipe-low-to-high-image, open-zoom-image-viewer)
+  

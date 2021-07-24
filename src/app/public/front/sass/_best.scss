@@ -1,0 +1,80 @@
+@charset "utf-8";
+
+.best {
+  &__container {
+  }
+
+  &__post {
+    height: 864px;
+    position: relative;
+    margin: 16px 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-shadow: 0 1px 1px #000;
+  }
+
+  &__overlay {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 300;
+  }
+
+  &__image {
+    height: 100%;
+  }
+
+  &__attribution {
+    width: 90%;
+    margin-top: 64px;
+  }
+
+  &__text {
+    z-index: 400;
+    text-align: center;
+    position: absolute;
+    word-break: break-all;
+
+    .rank {
+      font-size: 6rem;
+      line-height: 1.6;
+    }
+
+    .title {
+      margin-top: 48px;
+      font-size: 3rem;
+    }
+
+    .hostname {
+      margin-top: 16px;
+      font-size: 1.5rem;
+    }
+
+    .use__container {
+      margin-top: 8px;
+      font-size: 3rem;
+
+      // count, rate と ・の線を合わせる
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .use-separator {
+        margin: 0 16px;
+        font-weight: 800;
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  &__control {
+    margin-top: 64px;
+  }
+}

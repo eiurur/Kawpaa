@@ -1,0 +1,114 @@
+@media (max-width: 769px) {
+  nav {
+    display: block;
+  }
+
+  .sidebar {
+    left: -($sidebar-width + $sidebar-add-width);
+  }
+
+  .login-container {
+    .label {
+      font-size: 4vw;
+    }
+    .hlabel {
+      font-size: 20vw;
+      line-height: 0.8em;
+      display: inline-block;
+      padding: 0.1em 0.2em;
+      .nopadding {
+        padding: 0;
+      }
+    }
+  }
+
+  .hero__content {
+    bottom: 15vh;
+  }
+  .hero h1 {
+    margin: 60% 0 45px 0;
+  }
+
+  .site-main {
+    .section {
+      .dashboard {
+        margin: 0 auto;
+        width: 100%;
+        .media {
+          .retweet-user-icon {
+            position: absolute;
+            top: 20px;
+            left: 18px;
+            z-index: $z-index--retweet-user-icon;
+            .icon-img {
+              max-width: 14px;
+            }
+          }
+          .media-heading {
+            .name {
+              font-size: 0.6em;
+            }
+            .screen-name {
+              font-size: 0.6em;
+            }
+          }
+          .media-body {
+            font-size: 0.6em;
+            .retweet-user {
+              font-size: 0.6em;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .item__content .item__info {
+    padding: 0.4em;
+  }
+  .item__control {
+    height: calc(32px + 0.4rem);
+  }
+
+  /**
+   * History
+   */
+  .history {
+    margin: 0px 0 0 90px;
+    padding: 80px 50px;
+  }
+  .history .event:before {
+    left: -200px;
+    font-size: 0.5em;
+  }
+  .history .media .media__image {
+    width: 100px;
+    height: 100px;
+  }
+
+  /**
+   * Post Control Container
+   */
+  .search-condition__container {
+    right: 50px;
+    bottom: 0px;
+    margin: 10px;
+    & select {
+      width: 100%;
+    }
+    & .form-group:last-child {
+      margin-bottom: 0;
+    }
+
+    &:before {
+      margin-top: 45px;
+    }
+  }
+
+  .years {
+    width: 1080px;
+    &__item {
+      width: 16.6%;
+    }
+  }
+}

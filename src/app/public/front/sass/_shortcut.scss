@@ -1,0 +1,19 @@
+.shortcut {
+  &__container {
+    z-index: $z-index--shortcut-overlay;
+    background: rgba(0, 0, 0, 0.8);
+  }
+  &__list {
+  }
+  &__close {
+    color: $text-color;
+    position: absolute;
+    top: 20px;
+    right: 15px;
+    cursor: pointer;
+    transition: color .3s ease;
+    &:hover {
+      color: white;
+    }
+  }
+}

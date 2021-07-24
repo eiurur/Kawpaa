@@ -1,0 +1,112 @@
+/**
+ * CREADIT @ Tashfeen Ahmad
+ * https://codepen.io/tashfene/pen/raEqrJ
+ */
+.box-loader {
+  display: flex;
+  margin: 3rem auto;
+  width: 30px;
+  height: 30px;
+  position: relative;
+  border: 4px solid $theme-color;
+  top: 50%;
+  animation: box-loader 2s infinite ease;
+}
+
+.box-loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: $theme-color;
+  animation: box-loader-inner 2s infinite ease-in;
+}
+
+@keyframes box-loader {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(180deg);
+  }
+
+  50% {
+    transform: rotate(180deg);
+  }
+
+  75% {
+    transform: rotate(360deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes box-loader-inner {
+  0% {
+    height: 0%;
+  }
+
+  25% {
+    height: 0%;
+  }
+
+  50% {
+    height: 100%;
+  }
+
+  75% {
+    height: 100%;
+  }
+
+  100% {
+    height: 0%;
+  }
+}
+
+/**
+ * Circle-Ripple-Loader
+ * http://tobiasahlin.com/spinkit/
+ */
+.circle-ripple-loader {
+  width: 40px;
+  height: 40px;
+  margin: 100px auto;
+  background-color: #333;
+
+  border-radius: 100%;
+  -webkit-animation: sk-scaleout 1s infinite ease-in-out;
+  animation: sk-scaleout 1s infinite ease-in-out;
+}
+
+@-webkit-keyframes sk-scaleout {
+  0% {
+    -webkit-transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes sk-scaleout {
+  0% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/**
+ *
+ */
+.puff-loader {
+  display: flex;
+  margin: 0px auto;
+  padding: 60px 0;
+}

@@ -1,0 +1,25 @@
+
+.row(ng-if="postList.items.length != 0")
+  .flexible.col-sm-12.col-md-10.col-lg-10.col-xl-10.col-xxl-10
+    .top-unearth.scroll-decoration(ng-if="unearths.length != 0")
+      .item.item__container(ng-repeat='unearth in unearths', ng-if="unearth.items.length != 0")
+        a(href="/unearth?pageType={{pageType}}\#{{unearth.ago}}")
+          .img-overlay(data-years-ago="{{unearth.ago}}")
+          img(
+            ng-src="data/thumbnails/{{::unearth.random.images.tiny}}", 
+            to-img-src='data/thumbnails/{{::unearth.random.images.medium}}', 
+            img-src="data/images/{{::unearth.random.images.original}}", 
+            id="{{::unearth.random._id}}", 
+            pipe-low-to-high-image)
+    .row(infinite-scroll='postList.nextPage()', infinite-scroll-disabled='postList.busy', infinite-scroll-distance='1')
+      .item__container.col-xs-6.col-sm-4.col-md-3.col-lg-3.col-xl-1.col-xxl-1(ng-repeat='post in postList.items', ng-if="postList.items.length != 0")
+        .item
+          .item__content(type="{{::post.type}}", post-object-id="{{::post._id}}", item-border, multi-select)
+            include ./item/_item_image
+            .item__info
+              include ./item/_item_title
+              include ./item/_item_control
+  recommend-list.flexible.hidden-sm.col-md-2.col-lg-2.col-xl-2.col-xxl-2.recommends
+
+span(ng-if="postList.busy")
+  include ./_puff_loader
