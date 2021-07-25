@@ -9,15 +9,15 @@ const { logger } = require(path.resolve('logger'));
 
 const tasks = [
   {
-    filepath: `${process.env.CRAWL_BATCH_FILEPATH}/daily/DailyBatchExecuter`,
+    filepath: path.resolve(`${process.env.CRAWL_BATCH_FILEPATH}/daily/DailyBatchExecuter`),
     cronTime: '15 5 * * *',
   },
   {
-    filepath: `${process.env.CRAWL_BATCH_FILEPATH}/weekly/WeeklyBatchExecuter`,
+    filepath: path.resolve(`${process.env.CRAWL_BATCH_FILEPATH}/weekly/WeeklyBatchExecuter`),
     cronTime: '20 6 * * 1',
   },
   {
-    filepath: `${process.env.CRAWL_BATCH_FILEPATH}/daimonthlyly/MonthlyBatchExecuter`,
+    filepath: path.resolve(`${process.env.CRAWL_BATCH_FILEPATH}/monthly/MonthlyBatchExecuter`),
     cronTime: '40 6 1 * *',
   },
   {
