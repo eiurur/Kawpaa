@@ -14,6 +14,8 @@ services:
       - kawpaa-mongo
     volumes:
       - ./volume/app/data:/var/www/myapp/data
+    environment:
+      TZ: Asia/Tokyo
   kawpaa-mongo:
     container_name: kawpaa-mongo
     image: 'mongo:4'
