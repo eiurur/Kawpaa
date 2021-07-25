@@ -50,7 +50,7 @@
 
 ## ④ アプリケーションの起動
 
-    $ docker-compose up -d
+    $ docker-compose up -d --build
 
 ## ⑤ URL にアクセス
 
