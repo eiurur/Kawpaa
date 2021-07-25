@@ -6,3 +6,4 @@ logs
 shells
 keys
 volume
+.env

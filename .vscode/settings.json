@@ -3,5 +3,6 @@
   "search.exclude": {
     "**/build": true
   },
-  "html.format.wrapLineLength": 160
+  "html.format.wrapLineLength": 160,
+  "prettier.printWidth": 160
 }
