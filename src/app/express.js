@@ -21,6 +21,7 @@ module.exports = () => {
     secret: process.env.COOKIE_SECRET,
     saveUninitialized: false,
     resave: false,
+    name: "Kawpaa",
     store: MongoStore.create({
       mongoUrl: process.env.MONGODB_URI,
       collection: 'sessions',
