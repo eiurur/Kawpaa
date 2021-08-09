@@ -1,4 +1,4 @@
-const fs = require('fs-extra');
+const fsp = require('fs-extra');
 const request = require('request');
 
 module.exports = class ImageDownloader {
@@ -13,8 +13,9 @@ module.exports = class ImageDownloader {
   }
 
   execute() {
-    return new Promise((resolve, reject) => {
-      const ws = fs.createWriteStream(this.filepath);
+    return new Promise(async (resolve, reject) => {
+      await fsp.mkdirs(path.dirname(this.filepath));
+      const ws = fsp.createWriteStream(this.filepath);
       request(this.url, this.options).pipe(ws);
       ws.on('finish', () => resolve(this.url));
       ws.on('error', (err) => {
