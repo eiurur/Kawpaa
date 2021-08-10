@@ -1,5 +1,6 @@
 const fsp = require('fs-extra');
 const request = require('request');
+const path = require('path');
 
 module.exports = class ImageDownloader {
   constructor(url, filepath) {
