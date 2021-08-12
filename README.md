@@ -70,15 +70,87 @@ Git および Docker をインストールして、git コマンドおよび doc
 
 <details>
 <summary>詳細</summary>
-1-1. 下記リンクの手順を参考に上記3点を登録or取得します。
+1-1. Twitter開発者申請を行います。
 
-> <a href="https://www.itti.jp/web-direction/how-to-apply-for-twitter-api/" target="_blank">2021 年度版 Twitter API 利用申請の例文から API キーの取得まで</a>
+Twitter にログインした状態で下記リンク先のヘッダーの`Apply`をクリックします。
 
-※ また、本 README における以下の単語とリンク先の単語は次のように対応しています。
+> <a href="https://developer.twitter.com/en" target="_blank">Twitter Developer Platform</a>
 
-- `Consumer Key` ⇔ `API key`
-- `Consumer Secret` ⇔ `API secret key`
-- `Callback URLs` ⇔ `Callback URLs`
+<img src="media/twitter-1.png" alt="git_1" width="640" height="auto">
+
+`Apply for a developer account`をクリックします。
+
+<img src="media/twitter-2.png" alt="git_1" width="640" height="auto">
+
+`Hobbyist`を選択して、`Explorer the API`を選択し、`Get started`をクリックします。
+
+<img src="media/twitter-3.png" alt="git_1" width="640" height="auto">
+
+フォームを埋めて`Next`をクリックします。
+
+<img src="media/twitter-4.png" alt="git_1" width="640" height="auto">
+
+TwitterAPI と TwitterData の用途を聞かれるので英語で適当に答えます。
+DeepL で英語に翻訳した文章でも通ります。自分は以下のように記入しました。
+
+```
+1. I want to provide login authentication using Twitter OAuth on the service I develop and operate.
+2. I want to improve the efficiency of users by collecting and displaying tweets that match specific criteria.
+```
+
+<img src="media/twitter-5.png" alt="git_1" width="640" height="auto">
+
+下にスクロールすると追加で用途を聞かれますが、以下 3 つにチェックを入れて同様に英語で記入していきます。記入したら`Next`を押下します。
+
+- `Are you planning to analyze Twitter data?`
+
+  - I want to analyze the tweets that are popular with users that are automatically tweeted using Twitter API from my service.
+
+- `Will you app use Tweet, Retweet, Like, Follow, or Direct Message functionally?`
+
+  - I want to provie OAuth authenticated users with the ability to ReTweet and Like tweets displayed on my service.
+
+- `Do you plan to display Tweets or aggregate data about Twitter content outside Twitter?`
+  - I want to display to tweets that match certain criteria on my service to improve the efficiency of users.
+
+<img src="media/twitter-6.png" alt="git_1" width="640" height="auto">
+
+入力内容に誤りがなければ、`Next`をクリックします。
+
+<img src="media/twitter-6-2.png" alt="git_1" width="640" height="auto">
+
+登録中のメールアドレスに認証用メールが飛ぶのでメールの内容に従って Verify します。
+
+<img src="media/twitter-7.png" alt="git_1" width="640" height="auto">
+
+Verify が完了すると承認待ちになるのでしばらく待ちます。自分の場合は数時間で承認されました。
+
+<img src="media/twitter-7.png" alt="git_1" width="640" height="auto">
+
+1-2. TwitterAPI の利用申請を行います。
+
+開発者申請承認後、開発者用ページに飛ぶとアプリ名を入力するよう指示されますので重複しない適当な名前を入力して`Get keys`を押下します。
+
+<img src="media/twitter-8.png" alt="git_1" width="640" height="auto">
+
+`API Key`と`API Secret Key`が表示されるのでコピーしておきます。
+本 README では`API Key`が`ConsumerKey`、`API Secret Key`が`ConsumerSecret`にそれぞれ対応します。
+`Skip to dashboard`をクリックします。
+
+<img src="media/twitter-9.png" alt="git_1" width="640" height="auto">
+
+左メニューの`Project & Apps` > `Project 1` > 先程入力したアプリ名をクリックします。
+`Authentication settings`の`Edit`をクリックします。
+
+<img src="media/twitter-10.png" alt="git_1" width="640" height="auto">
+
+`Enable 3-legged OAuth`を有効にし、`Callback URLs`に`https://127.0.0.1:9021/auth/twitter/callback`を入力します。
+
+<img src="media/twitter-11.png" alt="git_1" width="640" height="auto">
+
+画面下までスクロールし、`Save`をクリックします。
+
+<img src="media/twitter-12.png" alt="git_1" width="640" height="auto">
 
 </details>
 
