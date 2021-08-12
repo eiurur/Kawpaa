@@ -119,7 +119,7 @@ DeepL で英語に翻訳した文章でも通ります。自分は以下のよ�
 
 <img src="media/twitter-6-2.png" alt="git_1" width="640" height="auto">
 
-登録中のメールアドレスに認証用メールが飛ぶのでメールの内容に従って Verify します。
+認証待ち画面に遷移します。登録中のメールアドレスに認証用メールが送信されますのでメールの内容に従って Verify します。
 
 <img src="media/twitter-7.png" alt="git_1" width="640" height="auto">
 
@@ -134,12 +134,17 @@ Verify が完了すると承認待ちになるのでしばらく待ちます。�
 <img src="media/twitter-8.png" alt="git_1" width="640" height="auto">
 
 `API Key`と`API Secret Key`が表示されるのでコピーしておきます。
-本 README では`API Key`が`ConsumerKey`、`API Secret Key`が`ConsumerSecret`にそれぞれ対応します。
+
+本 README では、それぞれ以下のように対応しますので適宜読み替えてください。
+
+- `API Key` ⇔ `ConsumerKey`
+- `API Secret Key` ⇔ `ConsumerSecret`
+
 `Skip to dashboard`をクリックします。
 
 <img src="media/twitter-9.png" alt="git_1" width="640" height="auto">
 
-左メニューの`Project & Apps` > `Project 1` > 先程入力したアプリ名をクリックします。
+左メニューの`Project & Apps` > `Project 1` > `<先程入力したアプリ名>`をクリックします。  
 `Authentication settings`の`Edit`をクリックします。
 
 <img src="media/twitter-10.png" alt="git_1" width="640" height="auto">
