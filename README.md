@@ -21,7 +21,7 @@ Git および Docker をインストールして、git コマンドおよび doc
 
 0-1. Git をインストールします(すでにインストール済みであれば作業不要です)。以下のリンクからインストーラをダウンロードしてください。
 
-> <a href="https://git-scm.com/doc">Git</a>
+> <a href="https://git-scm.com/">Git</a>
 
 <img src="media/git_1.jpeg" alt="git_1" width="880" height="auto">
 
