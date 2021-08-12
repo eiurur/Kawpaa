@@ -76,7 +76,7 @@ Git および Docker をインストールして、git コマンドおよび doc
 ※ また、本 README における以下の単語とリンク先の単語は次のように対応しています。
 
 - `Consumer Key` ⇔ `API key`
-- `Consumer Secret` ⇔ `API aecret key`
+- `Consumer Secret` ⇔ `API secret key`
 - `Callback URLs` ⇔ `Callback URLs`
 
 </details>
