@@ -6,7 +6,14 @@
 
 # 起動に必要なもの
 
-- <a href="https://docs.docker.com/get-docker/">Docker</a>
+- <a href="https://git-scm.com/">Git</a>
+- <a href="https://www.docker.com/products/docker-desktop">Docker</a>
+
+<br>
+
+# 想定環境
+
+- Windows10 Home
 
 <br>
 
@@ -24,6 +31,7 @@ Git および Docker をインストールして、git コマンドおよび doc
 > <a href="https://git-scm.com/">Git</a>
 
 <img src="media/git_1.jpeg" alt="git_1" width="640" height="auto">
+<br>
 
 0-2. ダウンロードしたインストーラを実行してインストールします。(初期設定を変更する必要は特になく Next ボタンを押下していくだけで大丈夫です)
 
@@ -41,8 +49,9 @@ Git および Docker をインストールして、git コマンドおよび doc
 <img src="media/git_13.png" alt="git_1" width="640" height="auto">
 <img src="media/git_14.png" alt="git_1" width="640" height="auto">
 <img src="media/git_15.png" alt="git_1" width="640" height="auto">
+<br>
 
-0-3. 以下のリンクを参考に Docker をインストールしてください。
+0-3. 以下のリンクを参考に Docker をインストールしてください。(すでにインストール済みであれば作業不要です)
 
 > <a href="https://qiita.com/zaki-lknr/items/db99909ba1eb27803456">Windows 10 Home への Docker Desktop (ver 3.0.0) インストールが何事もなく簡単にできるようになっていた (2020.12 時点) - Qiita</a>
 
@@ -84,6 +93,8 @@ Git および Docker をインストールして、git コマンドおよび doc
 2-1. git-bash を起動してください。
 
 <img src="media/git-bash.png" alt="git_1" width="640" height="auto">
+
+<br>
 
 2-2. プロジェクトの clone、ディレクトリの移動を行ってください。
 
