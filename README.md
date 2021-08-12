@@ -137,13 +137,13 @@ Git および Docker をインストールして、git コマンドおよび doc
 
 3-1. `.env.docker.sample`を`.env.docker`に改名してください。
 
-> mv .env.docker.sample .env.docker
+    mv .env.docker.sample .env.docker
 
 <img src="media/env-1.png" alt="git_1" width="640" height="auto">
 
 3-2. `.env.docker`の内容のうち、`TW_CK`、`TW_CS`、`CALLBACK_URL`をそれぞれ ① で得られた値に変更してください。notepad コマンドを実行するとメモ帳が開きます。変更が終わりましたら保存してメモ帳を閉じてください。
 
-> notepad .env.docker
+    notepad .env.docker
 
 **変更前**
 
