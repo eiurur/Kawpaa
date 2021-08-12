@@ -23,24 +23,24 @@ Git および Docker をインストールして、git コマンドおよび doc
 
 > <a href="https://git-scm.com/">Git</a>
 
-<img src="media/git_1.jpeg" alt="git_1" width="880" height="auto">
+<img src="media/git_1.jpeg" alt="git_1" width="640" height="auto">
 
 0-2. ダウンロードしたインストーラを実行してインストールします。(初期設定を変更する必要は特になく Next ボタンを押下していくだけで大丈夫です)
 
-<img src="media/git_2.png" alt="git_1" width="880" height="auto">
-<img src="media/git_3.png" alt="git_1" width="880" height="auto">
-<img src="media/git_4.png" alt="git_1" width="880" height="auto">
-<img src="media/git_5.png" alt="git_1" width="880" height="auto">
-<img src="media/git_6.png" alt="git_1" width="880" height="auto">
-<img src="media/git_7.png" alt="git_1" width="880" height="auto">
-<img src="media/git_8.png" alt="git_1" width="880" height="auto">
-<img src="media/git_9.png" alt="git_1" width="880" height="auto">
-<img src="media/git_10.png" alt="git_1" width="880" height="auto">
-<img src="media/git_11.png" alt="git_1" width="880" height="auto">
-<img src="media/git_12.png" alt="git_1" width="880" height="auto">
-<img src="media/git_13.png" alt="git_1" width="880" height="auto">
-<img src="media/git_14.png" alt="git_1" width="880" height="auto">
-<img src="media/git_15.png" alt="git_1" width="880" height="auto">
+<img src="media/git_2.png" alt="git_1" width="640" height="auto">
+<img src="media/git_3.png" alt="git_1" width="640" height="auto">
+<img src="media/git_4.png" alt="git_1" width="640" height="auto">
+<img src="media/git_5.png" alt="git_1" width="640" height="auto">
+<img src="media/git_6.png" alt="git_1" width="640" height="auto">
+<img src="media/git_7.png" alt="git_1" width="640" height="auto">
+<img src="media/git_8.png" alt="git_1" width="640" height="auto">
+<img src="media/git_9.png" alt="git_1" width="640" height="auto">
+<img src="media/git_10.png" alt="git_1" width="640" height="auto">
+<img src="media/git_11.png" alt="git_1" width="640" height="auto">
+<img src="media/git_12.png" alt="git_1" width="640" height="auto">
+<img src="media/git_13.png" alt="git_1" width="640" height="auto">
+<img src="media/git_14.png" alt="git_1" width="640" height="auto">
+<img src="media/git_15.png" alt="git_1" width="640" height="auto">
 
 0-3. 以下のリンクを参考に Docker をインストールしてください。
 
@@ -83,11 +83,11 @@ Git および Docker をインストールして、git コマンドおよび doc
 
 2-1. git-bash を起動してください。
 
-<img src="media/git-bash.png" alt="git_1" width="880" height="auto">
+<img src="media/git-bash.png" alt="git_1" width="640" height="auto">
 
 2-2. プロジェクトの clone、ディレクトリの移動を行ってください。
 
-<img src="media/project.png" alt="git_1" width="880" height="auto">
+<img src="media/project.png" alt="git_1" width="640" height="auto">
 
 </details>
 
@@ -124,7 +124,7 @@ Git および Docker をインストールして、git コマンドおよび doc
 
 > mv .env.docker.sample .env.docker
 
-<img src="media/env-1.png" alt="git_1" width="880" height="auto">
+<img src="media/env-1.png" alt="git_1" width="640" height="auto">
 
 3-2. `.env.docker`の内容のうち、`TW_CK`、`TW_CS`、`CALLBACK_URL`をそれぞれ ① で得られた値に変更してください。notepad コマンドを実行するとメモ帳が開きます。変更が終わりましたら保存してメモ帳を閉じてください。
 
@@ -132,11 +132,11 @@ Git および Docker をインストールして、git コマンドおよび doc
 
 **変更前**
 
-<img src="media/env-2.png" alt="git_1" width="880" height="auto">
+<img src="media/env-2.png" alt="git_1" width="640" height="auto">
 
 **変更後(例)**
 
-<img src="media/env-3.png" alt="git_1" width="880" height="auto">
+<img src="media/env-3.png" alt="git_1" width="640" height="auto">
 
 </details>
 
@@ -153,16 +153,16 @@ Git および Docker をインストールして、git コマンドおよび doc
 
 **起動開始**
 
-<img src="media/start-docker-1.png" alt="git_1" width="880" height="auto">
+<img src="media/start-docker-1.png" alt="git_1" width="640" height="auto">
 
 **起動完了後**
 
-<img src="media/start-docker-2.png" alt="git_1" width="880" height="auto">
+<img src="media/start-docker-2.png" alt="git_1" width="640" height="auto">
 
 4-2. タスクバーの docker アイコンを右クリックして`Dashboard`メニューを左クリックし、kawpaa コンテナが立ち上がっていることを確認してください。
 
-<img src="media/start-docker-3.png" alt="git_1" width="880" height="auto">
-<img src="media/start-docker-4.png" alt="git_1" width="880" height="auto">
+<img src="media/start-docker-3.png" alt="git_1" width="640" height="auto">
+<img src="media/start-docker-4.png" alt="git_1" width="640" height="auto">
 
 </details>
 <br>
@@ -176,8 +176,8 @@ Git および Docker をインストールして、git コマンドおよび doc
 
 5-1. ブラウザを起動して`https://127.0.0.1:9021`にアクセスします。`詳細設定`>`127.0.0.1にアクセスする(安全ではありません)`をクリックしてください。Kawpaa のトップ画面が表示されたら作業完了です。
 
-<img src="media/open-1.png" alt="git_1" width="880" height="auto">
-<img src="media/open-2.png" alt="git_1" width="880" height="auto">
+<img src="media/open-1.png" alt="git_1" width="640" height="auto">
+<img src="media/open-2.png" alt="git_1" width="640" height="auto">
 
 </details>
 <br>
