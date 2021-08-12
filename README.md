@@ -125,7 +125,7 @@ DeepL で英語に翻訳した文章でも通ります。自分は以下のよ�
 
 Verify が完了すると承認待ちになるのでしばらく待ちます。自分の場合は数時間で承認されました。
 
-<img src="media/twitter-7.png" alt="git_1" width="640" height="auto">
+<img src="media/twitter-7-2.png" alt="git_1" width="640" height="auto">
 
 1-2. TwitterAPI の利用申請を行います。
 
