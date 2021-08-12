@@ -6,8 +6,8 @@
 
 # 起動に必要なもの
 
-- <a href="https://git-scm.com/">Git</a>
-- <a href="https://www.docker.com/products/docker-desktop">Docker</a>
+- <a href="https://git-scm.com/" target="_blank">Git</a>
+- <a href="https://www.docker.com/products/docker-desktop" target="_blank">Docker</a>
 
 <br>
 
@@ -28,9 +28,10 @@ Git および Docker をインストールして、git コマンドおよび doc
 
 0-1. Git をインストールします(すでにインストール済みであれば作業不要です)。以下のリンクからインストーラをダウンロードしてください。
 
-> <a href="https://git-scm.com/">Git</a>
+> <a href="https://git-scm.com/" target="_blank">Git</a>
 
 <img src="media/git_1.jpeg" alt="git_1" width="640" height="auto">
+
 <br>
 
 0-2. ダウンロードしたインストーラを実行してインストールします。(初期設定を変更する必要は特になく Next ボタンを押下していくだけで大丈夫です)
@@ -53,7 +54,7 @@ Git および Docker をインストールして、git コマンドおよび doc
 
 0-3. 以下のリンクを参考に Docker をインストールしてください。(すでにインストール済みであれば作業不要です)
 
-> <a href="https://qiita.com/zaki-lknr/items/db99909ba1eb27803456">Windows 10 Home への Docker Desktop (ver 3.0.0) インストールが何事もなく簡単にできるようになっていた (2020.12 時点) - Qiita</a>
+> <a href="https://qiita.com/zaki-lknr/items/db99909ba1eb27803456" target="_blank">Windows 10 Home への Docker Desktop (ver 3.0.0) インストールが何事もなく簡単にできるようになっていた (2020.12 時点) - Qiita</a>
 
 </details>
 
@@ -64,13 +65,13 @@ Git および Docker をインストールして、git コマンドおよび doc
 以下のリンクから Twitter API の利用申請をして、`Callback URLs`の登録および`Consumer Key`と`Consumer Secret`の取得が必要です。  
 もし、アプリケーションをローカルに立ち上げる場合は、申請時に`Callback URLs`の入力欄に`https://127.0.0.1:9021/auth/twitter/callback`を指定してください。
 
-> <a href="https://developer.twitter.com/en">Twitter Developer Platform</a>
+> <a href="https://developer.twitter.com/en" target="_blank">Twitter Developer Platform</a>
 
 <details>
 <summary>詳細</summary>
 1-1. 下記リンクの手順を参考に上記3点を登録or取得します。
 
-<a href="https://www.itti.jp/web-direction/how-to-apply-for-twitter-api/">2021 年度版 Twitter API 利用申請の例文から API キーの取得まで</a>
+> <a href="https://www.itti.jp/web-direction/how-to-apply-for-twitter-api/" target="_blank">2021 年度版 Twitter API 利用申請の例文から API キーの取得まで</a>
 
 ※ また、本 README における以下の単語とリンク先の単語は次のように対応しています。
 
@@ -97,6 +98,9 @@ Git および Docker をインストールして、git コマンドおよび doc
 <br>
 
 2-2. プロジェクトの clone、ディレクトリの移動を行ってください。
+
+    $ git clone https://github.com/eiurur/Kawpaa.git
+    $ cd Kawpaa
 
 <img src="media/project.png" alt="git_1" width="640" height="auto">
 
@@ -180,7 +184,7 @@ Git および Docker をインストールして、git コマンドおよび doc
 
 ## 5. URL にアクセス
 
-ブラウザを起動して <a href="https://127.0.0.1:9021/">https://127.0.0.1:9021/</a> にアクセスします
+ブラウザを起動して <a href="https://127.0.0.1:9021/" target="_blank">https://127.0.0.1:9021/</a> にアクセスします
 
 <details>
 <summary>詳細</summary>
