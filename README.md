@@ -52,7 +52,8 @@ Git および Docker をインストールして、git コマンドおよび doc
 <img src="media/git_15.png" alt="git_1" width="640" height="auto">
 <br>
 
-0-3. 以下のリンクを参考に Docker をインストールしてください。(すでにインストール済みであれば作業不要です)
+0-3. 以下のリンクの`準備`
+～`インストール`のセクションの内容を参考に Docker をインストールしてください。(すでにインストール済みであれば作業不要です)
 
 > <a href="https://qiita.com/zaki-lknr/items/db99909ba1eb27803456" target="_blank">Windows 10 Home への Docker Desktop (ver 3.0.0) インストールが何事もなく簡単にできるようになっていた (2020.12 時点) - Qiita</a>
 
