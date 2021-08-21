@@ -42,7 +42,7 @@ module.exports = class KawpaaCapacity {
    * @return {Boolean} - 許容するサイズを超えるかどうか。10MB以上はfalse、そうでなければtrue
    */
   async allowableFilesize() {
-    if (!this.url) return true;
+    if (!this.url) return true; // 保存元ページの画像が取得できずにnullが渡されるとaxiosのエラーが発生するためリクエストせずに許容する。
     const scaler = new FileSizeScaler(this.url);
     const byte = await this.fetch({ process: scaler });
     return this.checkByteOverLimit(byte);

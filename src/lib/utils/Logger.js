@@ -1,5 +1,4 @@
-const fs = require('fs');
-const fx = require('mkdir-recursive');
+const fsp = require('fs-extra');
 const path = require('path');
 const bunyan = require('bunyan');
 
@@ -9,7 +8,7 @@ module.exports = {
   activate: (env) => {
     switch ((env || process.env.NODE_ENV || '').toLowerCase()) {
       case 'production':
-        fs.existsSync(CONSOLE_LOG_DIRECTORY) || fx.mkdirSync(CONSOLE_LOG_DIRECTORY);
+        fsp.existsSync(CONSOLE_LOG_DIRECTORY) || fsp.mkdirsSync(CONSOLE_LOG_DIRECTORY);
 
         var log = bunyan.createLogger({
           name: 'kawpaa.production',
@@ -35,7 +34,7 @@ module.exports = {
         break;
 
       case 'development':
-        fs.existsSync(CONSOLE_LOG_DIRECTORY) || fx.mkdirSync(CONSOLE_LOG_DIRECTORY);
+        fsp.existsSync(CONSOLE_LOG_DIRECTORY) || fsp.mkdirsSync(CONSOLE_LOG_DIRECTORY);
 
         var log = bunyan.createLogger({
           name: 'kawpaa.development',
