@@ -42,6 +42,7 @@ module.exports = class KawpaaCapacity {
    * @return {Boolean} - 許容するサイズを超えるかどうか。10MB以上はfalse、そうでなければtrue
    */
   async allowableFilesize() {
+    if (!this.url) return true;
     const scaler = new FileSizeScaler(this.url);
     const byte = await this.fetch({ process: scaler });
     return this.checkByteOverLimit(byte);
