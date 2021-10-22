@@ -102,7 +102,7 @@ module.exports = class TrasnportRepository {
       const videoClone = { ...video };
       delete videoClone._id;
       await videoProvider.findOneAndUpdate({ video: videoClone });
-      if (videoClone.orignal)
+      if (videoClone.original)
         await download(`${APP_FQDN}/data/videos/${videoClone.original}`, path.join(dist, 'videos'), {
           filename: videoClone.original,
           timeout: TIMEOUT_MS,
