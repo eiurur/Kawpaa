@@ -110,11 +110,7 @@ module.exports = {
     dest: `${dest + app_front}/css/fonts/`,
   },
   rev: {
-    src: [
-      `${
-        dest + app_front
-      }/**/*.+(min.js|min.css|png|gif|jpg|jpeg|svg|woff|ico|gz)`,
-    ],
+    src: [`${dest + app_front}/**/*.+(min.js|min.css|png|gif|jpg|jpeg|avif|webp|svg|woff|ico|gz)`],
     dest: `${dest + app_front}/`,
     manifestFileName: 'rev-manifest.json',
   },
@@ -157,10 +153,7 @@ module.exports = {
     dest: './build/app',
   },
   watch: {
-    server_js_copy: [
-      `${relativeSrcPath}/**/*.js`,
-      `!${relativeSrcPath + app_front}/**/*.js`,
-    ],
+    server_js_copy: [`${relativeSrcPath}/**/*.js`, `!${relativeSrcPath + app_front}/**/*.js`],
     coffee_app_public: `${relativeSrcPath + app_front}/**/*.coffee`,
     sass: `${relativeSrcPath + app_front}/sass/**`,
     jade_copy: `${relativeSrcPath + app}/views/**`,

@@ -21,7 +21,7 @@ module.exports = () => {
     secret: process.env.COOKIE_SECRET,
     saveUninitialized: false,
     resave: false,
-    name: "Kawpaa",
+    name: 'Kawpaa',
     store: MongoStore.create({
       mongoUrl: process.env.MONGODB_URI,
       collection: 'sessions',
@@ -88,7 +88,7 @@ module.exports = () => {
     const cacheOptions = {
       dotfiles: 'ignore',
       etag: true,
-      extensions: ['css', 'js', 'jpg', 'png', 'gif', 'webp', 'mp4', 'webm', 'avi'],
+      extensions: ['css', 'js', 'jpg', 'png', 'gif', 'webp', 'mp4', 'webm', 'avi', 'avif'],
       index: false,
       maxAge: 86400000 * 30 * 12, // 12ヶ月
       redirect: false,
