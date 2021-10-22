@@ -70,7 +70,7 @@
     "puppeteer": "^8.0.0",
     "redis": "^3.1.2",
     "request": "^2.88.2",
-    "samune": "^0.5.2",
+    "samune": "^0.6.0",
     "session": "^0.1.0",
     "slack-node": "^0.2.0",
     "sleep-promise": "^9.1.0",
