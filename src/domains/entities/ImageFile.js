@@ -1,4 +1,7 @@
 const path = require('path');
+const imagemin = require('imagemin');
+const imageminWebp = require('imagemin-webp');
+const fsp = require('fs-extra');
 
 const { my } = require(path.resolve('build', 'lib', 'my'));
 const { CONTENT_TYPES, DEFAULT_IMAGE_EXTENSION } = require(path.resolve('build', 'lib', 'constants'));
@@ -23,14 +26,25 @@ module.exports = class ImageFile {
   }
 
   extractExtension(url) {
-    return this.squeezeImageExtension(
-      this.excludeIllegalCharactersFromExtension(this.getExtensionFromUrl(url)),
-    );
+    return this.squeezeImageExtension(this.excludeIllegalCharactersFromExtension(this.getExtensionFromUrl(url)));
   }
 
   // 画像拡張子に絞る
   squeezeImageExtension(ext) {
-    return ['.jpg', '.png', '.jpeg', '.gif'].includes(ext) ? ext : DEFAULT_IMAGE_EXTENSION;
+    return ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.avif'].includes(ext) ? ext : DEFAULT_IMAGE_EXTENSION;
+  }
+
+  async optimize(filepath, to) {
+    await imagemin([filepath], {
+      destination: to,
+      glob: false,
+      plugins: [imageminWebp({ lossless: true })],
+    });
+    const filename = path.basename(filepath, path.extname(filepath));
+    const ext = '.webp';
+    const dest = path.join(to, `${filename}${ext}`);
+    await fsp.rename(filepath, dest);
+    this.changeExtension('.webp');
   }
 
   // クエリストリングなど、余計な文字を除去し、拡張子だけにする

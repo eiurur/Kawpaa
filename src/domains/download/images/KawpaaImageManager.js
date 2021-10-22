@@ -91,6 +91,9 @@ module.exports = class KawpaaImageManager extends ImageManager {
           filepath: this.filepath,
         });
         await downloader.download(); // falseならthrowされるのでif分岐処理が不要
+
+        // avifを保存するとき、ままだと不安定なのでwebpに変換する
+        await this.imageFile.optimize(this.filepath, DIRECTORIES.IMAGES_TO);
       } catch (e) {
         logger.info('【ERROR】save() => ', e);
         if (this.shouldSaveScreenShot(type)) {
