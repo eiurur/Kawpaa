@@ -139,6 +139,6 @@
     "vinyl-source-stream": "^2.0.0"
   },
   "engines": {
-    "node": "12.x"
+    "node": "14.x"
   }
 }
