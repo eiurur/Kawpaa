@@ -3,13 +3,7 @@ const Chohuku = require('chohuku');
 
 const ImageManager = require(path.resolve('build', 'lib', 'ImageManager'));
 
-const KawpaaThumbnailGenerator = require(path.resolve(
-  'build',
-  'domains',
-  'download',
-  'images',
-  'KawpaaThumbnailGenerator',
-));
+const KawpaaThumbnailGenerator = require(path.resolve('build', 'domains', 'download', 'images', 'KawpaaThumbnailGenerator'));
 
 const { DIRECTORIES } = require(path.resolve('build', 'lib', 'constants'));
 
@@ -21,9 +15,13 @@ module.exports = class KawpaaThumbnailManager extends ImageManager {
   }
 
   async generateHash(filepath) {
-    const hashHexDecimal = await new Chohuku(filepath).getHash();
-    const ret = { hashHexDecimal };
-    return ret;
+    try {
+      const hashHexDecimal = await new Chohuku(filepath).getHash(); // webp非対応
+      const ret = { hashHexDecimal };
+      return ret;
+    } catch (err) {
+      return null;
+    }
   }
 
   /**
@@ -39,10 +37,7 @@ module.exports = class KawpaaThumbnailManager extends ImageManager {
    * @param {} type
    */
   async save(type) {
-    const [image, hash] = await Promise.all([
-      this.generateThumbnails(),
-      this.generateHash(this.filepath),
-    ]);
+    const [image, hash] = await Promise.all([this.generateThumbnails(), this.generateHash(this.filepath)]);
     return {
       image,
       hash,
