@@ -20,9 +20,11 @@ services:
   kawpaa-mongo:
     container_name: kawpaa-mongo
     image: 'mongo:4'
+    restart: always
     volumes:
       - ./volume/mongo/db:/data/db
       - ./volume/mongo/configdb:/data/configdb
   kawpaa-redis:
     container_name: kawpaa-redis
     image: 'redis:5.0.8'
+    restart: always
