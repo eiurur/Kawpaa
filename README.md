@@ -1,7 +1,7 @@
 # Kawpaa
 
 <div align="center">
-  <img src="media/hero.jpg" alt="hero" width="880" height="auto">
+  <img src="media/hero_.jpg" alt="hero" width="880" height="auto">
   <p>Kawpaa is web service to assist your masturbation life.</p>
 </div>
 
