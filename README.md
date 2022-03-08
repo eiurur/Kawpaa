@@ -5,7 +5,9 @@
   <p>Kawpaa is web service to assist your masturbation life.</p>
 </div>
 
-注意: データの登録には<a href="https://github.com/eiurur/Save-to-Kawpaa">Save-to-Kawpaa</a>の利用が必要です。
+<br>
+
+NOTE: データの登録には<a href="https://github.com/eiurur/Save-to-Kawpaa">Save-to-Kawpaa</a>の利用が必要です。
 
 <br>
 
