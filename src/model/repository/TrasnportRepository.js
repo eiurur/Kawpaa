@@ -89,11 +89,14 @@ module.exports = class TrasnportRepository {
     await fsp.mkdirs(dist);
     await fsp.mkdirs(path.join(dist, 'images'));
     await fsp.mkdirs(path.join(dist, 'videos'));
+    const posts = [...record.archives, ...record.posts];
+    logger.info('posts[0]', posts[0]);
 
     for (let image of record.images) {
       try {
         const imageClone = { ...image };
-        const imageId = toObjectId(imageClone._id);
+        // const imageId = toObjectId(imageClone._id); // from db
+        const imageId = imageClone._id; // from file
         delete imageClone._id;
         if (imageClone.original) {
           const filepath = path.join(dist, 'images', imageClone.original);
@@ -109,8 +112,10 @@ module.exports = class TrasnportRepository {
               throw new Error('404');
             }
           } catch (e) {
-            const p = await postProvider.findOne({ images: imageId });
-            const dp = await doneProvider.findOne({ images: imageId });
+            // const p = await postProvider.findOne({ images: imageId });
+            // const dp = await doneProvider.findOne({ images: imageId });
+            const p = posts.find((post) => post.images._id === imageId);
+            const dp = record.dones.find((post) => post.images._id === imageId);
             const post = p || dp;
             if (post) {
               // if (post.type === 'video') throw new Error('duplicate');
@@ -136,7 +141,8 @@ module.exports = class TrasnportRepository {
     for (let video of record.videos) {
       try {
         const videoClone = { ...video };
-        const videoId = toObjectId(videoClone._id);
+        // const videoId = toObjectId(videoClone._id); from db
+        const videoId = videoClone._id;
         delete videoClone._id;
         if (videoClone.original) {
           const filepath = path.join(dist, 'videos', videoClone.original);
@@ -153,8 +159,10 @@ module.exports = class TrasnportRepository {
               throw new Error('404');
             }
           } catch (e) {
-            const p = await postProvider.findOne({ videos: videoId });
-            const dp = await doneProvider.findOne({ videos: videoId });
+            // const p = await postProvider.findOne({ videos: videoId });
+            // const dp = await doneProvider.findOne({ videos: videoId });
+            const p = posts.find((post) => post.videos._id === videoId);
+            const dp = record.dones.find((post) => post.videos._id === videoId);
             const post = p || dp;
             if (post) {
               const videoUrl = post.url || post.siteImage;
@@ -169,7 +177,7 @@ module.exports = class TrasnportRepository {
         }
         await sleep(100);
       } catch (e) {
-        logger.error('ERROR ', image);
+        logger.error('ERROR ', video);
         logger.error(e);
       }
     }
