@@ -1,6 +1,15 @@
 const path = require('path');
+const imagemin = require('imagemin');
+const imageminWebp = require('imagemin-webp');
+const FileType = require('file-type');
+const fsp = require('fs-extra');
 const download = require('download');
 const sleep = require('sleep-promise');
+const mongoose = require('mongoose');
+
+const { ImageFile, VideoFile } = require(path.resolve('build', 'domains', 'entities'));
+const KawpaaImageManager = require(path.resolve('build', 'domains', 'download', 'images', 'KawpaaImageManager'));
+const KawpaaVideoManager = require(path.resolve('build', 'domains', 'download', 'video', 'KawpaaVideoManager'));
 
 const { logger } = require(path.resolve('logger'));
 
@@ -8,6 +17,8 @@ const DatabaseProviderFactory = require(path.resolve('build', 'model', 'lib', 'D
 const { APP_FQDN } = require(path.resolve('build', 'lib', 'constants'));
 const KawpaaThumbnailGenerator = require(path.resolve('build', 'domains', 'download', 'images', 'KawpaaThumbnailGenerator'));
 const TIMEOUT_MS = 10000000;
+
+const toObjectId = (str) => mongoose.Types.ObjectId(str);
 
 module.exports = class TrasnportRepository {
   constructor() {}
@@ -73,42 +84,94 @@ module.exports = class TrasnportRepository {
     const doneProvider = DatabaseProviderFactory.createProvider('Done');
     const doneHistoryProvider = DatabaseProviderFactory.createProvider('doneHistory');
     const dist = path.resolve('data');
+
+    // dataフォルダが存在しないと復元に失敗する。
+    await fsp.mkdirs(dist);
+    await fsp.mkdirs(path.join(dist, 'images'));
+    await fsp.mkdirs(path.join(dist, 'videos'));
+
     for (let image of record.images) {
-      logger.info('START:', image._id);
       try {
         const imageClone = { ...image };
-        const ex = await imageProvider.findOne({ original: imageClone.original });
-        if (!ex) {
-          delete imageClone._id;
-          if (imageClone.original) {
+        const imageId = toObjectId(imageClone._id);
+        delete imageClone._id;
+        if (imageClone.original) {
+          const filepath = path.join(dist, 'images', imageClone.original);
+          try {
             await download(`${APP_FQDN}/data/images/${imageClone.original}`, path.join(dist, 'images'), {
               filename: imageClone.original,
               timeout: TIMEOUT_MS,
-              retry: 5,
             });
-            await KawpaaThumbnailGenerator.generate({ filename: imageClone.original });
+            const { ext, mime } = await FileType.fromFile(filepath);
+            const isImage = mime.includes('image');
+            if (!isImage) {
+              await fsp.remove(filepath);
+              throw new Error('404');
+            }
+          } catch (e) {
+            const p = await postProvider.findOne({ images: imageId });
+            const dp = await doneProvider.findOne({ images: imageId });
+            const post = p || dp;
+            if (post) {
+              // if (post.type === 'video') throw new Error('duplicate');
+              const imageUrl = post.url || post.siteImage;
+              logger.info('Download from:', imageUrl);
+              const filename = path.basename(image.original, path.extname(image.original));
+              const imageFile = new ImageFile(post.type, imageUrl, filename);
+              const kawpaaImageManager = new KawpaaImageManager(imageFile, post);
+              await kawpaaImageManager.save(post.type);
+            }
           }
+          await KawpaaThumbnailGenerator.generate({ filename: imageClone.original });
           await imageProvider.findOneAndUpdate({ image: imageClone });
         }
         await sleep(100);
       } catch (e) {
-        console.error('ERROR ', image);
-        console.error(e);
+        logger.error('ERROR ', image);
+        logger.error(e);
       }
     }
     logger.info('FINISH: images', record.images.length);
 
     for (let video of record.videos) {
-      const videoClone = { ...video };
-      delete videoClone._id;
-      await videoProvider.findOneAndUpdate({ video: videoClone });
-      if (videoClone.original)
-        await download(`${APP_FQDN}/data/videos/${videoClone.original}`, path.join(dist, 'videos'), {
-          filename: videoClone.original,
-          timeout: TIMEOUT_MS,
-          retry: 0,
-        });
-      await sleep(100);
+      try {
+        const videoClone = { ...video };
+        const videoId = toObjectId(videoClone._id);
+        delete videoClone._id;
+        if (videoClone.original) {
+          const filepath = path.join(dist, 'videos', videoClone.original);
+          try {
+            await download(`${APP_FQDN}/data/videos/${videoClone.original}`, path.join(dist, 'videos'), {
+              filename: videoClone.original,
+              timeout: TIMEOUT_MS,
+            });
+
+            const { ext, mime } = await FileType.fromFile(filepath);
+            const isVideo = mime.includes('video');
+            if (!isVideo) {
+              await fsp.remove(filepath);
+              throw new Error('404');
+            }
+          } catch (e) {
+            const p = await postProvider.findOne({ videos: videoId });
+            const dp = await doneProvider.findOne({ videos: videoId });
+            const post = p || dp;
+            if (post) {
+              const videoUrl = post.url || post.siteImage;
+              logger.info('Download from:', videoUrl);
+              const filename = path.basename(videoClone.original, path.extname(videoClone.original));
+              const videoFile = new VideoFile(post.url, filename);
+              const kawpaaVideoManager = new KawpaaVideoManager(videoFile, post);
+              await kawpaaVideoManager.save(post.type);
+            }
+          }
+          await videoProvider.findOneAndUpdate({ video: videoClone });
+        }
+        await sleep(100);
+      } catch (e) {
+        logger.error('ERROR ', image);
+        logger.error(e);
+      }
     }
     logger.info('FINISH: videos', record.videos.length);
 
@@ -182,8 +245,8 @@ module.exports = class TrasnportRepository {
         logger.info(r);
         dps.push({ _id: r._doc._id, preId: donePost._id });
       } catch (e) {
-        console.error('ERROR ', donePost);
-        console.error(e);
+        logger.error('ERROR ', donePost);
+        logger.error(e);
       }
     }
     logger.info('FINISH: dones', record.dones.length);
