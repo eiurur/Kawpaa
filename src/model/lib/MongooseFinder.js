@@ -1,7 +1,5 @@
 module.exports = class MongooseFinder {
-  constructor({
-    model, options, fields, limit, skip, sort, populates,
-  }) {
+  constructor({ model, options, fields, limit, skip, sort, populates }) {
     this.model = model;
     this.options = options;
     this.fields = fields;
@@ -16,16 +14,16 @@ module.exports = class MongooseFinder {
    * @param {*} query
    */
   buildQuery(query) {
+    if (this.sort) {
+      query = query.sort(this.sort);
+    }
+
     if (this.limit) {
       query = query.limit(this.limit);
     }
 
     if (this.skip) {
       query = query.skip(this.skip);
-    }
-
-    if (this.sort) {
-      query = query.sort(this.sort);
     }
 
     if (this.populates) {

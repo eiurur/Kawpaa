@@ -18,28 +18,33 @@ module.exports = {
     }
   },
 
+  // REF: https://stackoverflow.com/questions/66172034/mongoose-sort-breaks-skip-limit
+  _allowNumberSort(sort) {
+    return Object.assign({}, sort, { _id: -1 });
+  },
+
   getSortType(type) {
     const ASCENDING = 1;
     const DESCENDING = -1;
     switch (type) {
       case 'updatedAtAsc':
-        return { updatedAt: ASCENDING };
+        return this._allowNumberSort({ updatedAt: ASCENDING });
       case 'updatedAtDesc':
-        return { updatedAt: DESCENDING };
+        return this._allowNumberSort({ updatedAt: DESCENDING });
       case 'createdAtAsc':
-        return { createdAt: ASCENDING };
+        return this._allowNumberSort({ createdAt: ASCENDING });
       case 'createdAtDesc':
-        return { createdAt: DESCENDING };
+        return this._allowNumberSort({ createdAt: DESCENDING });
       case 'siteNameAsc':
-        return { siteName: ASCENDING };
+        return this._allowNumberSort({ siteName: ASCENDING });
       case 'siteNameDesc':
-        return { siteName: DESCENDING };
+        return this._allowNumberSort({ siteName: DESCENDING });
       case 'numDoneAsc':
-        return { numDone: ASCENDING };
+        return this._allowNumberSort({ numDone: ASCENDING });
       case 'numDoneDesc':
-        return { numDone: DESCENDING };
+        return this._allowNumberSort({ numDone: DESCENDING });
       default:
-        return { updatedAt: DESCENDING };
+        return this._allowNumberSort({ updatedAt: DESCENDING });
     }
   },
 };
