@@ -10,7 +10,7 @@ module.exports = function (app) {
   process.on('unhandledRejection', console.dir);
   app.locals.pretty = true;
   app.use(morgan('dev'));
-  logger.info(process.env);
+  logger.debug(process.env);
 
   return app.use((err, req, res, next) => {
     res.status(err.status || 500);

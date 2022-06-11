@@ -26,5 +26,5 @@ module.exports = (app) => {
 
   // setup the logger
   app.use(morgan('combined', { stream: accessLogStream }));
-  logger.info(process.env);
+  logger.debug(process.env);
 };
