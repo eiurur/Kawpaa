@@ -13,7 +13,7 @@ NOTE: データの登録には<a href="https://github.com/eiurur/Save-to-Kawpaa"
 
 **ホスティング例**
 
-> <a href="https://kawpaa.eiurur.xyz/" target="_blank">https://kawpaa.eiurur.xyz/</a>
+> ~~<a href="https://kawpaa.eiurur.xyz/" target="_blank">https://kawpaa.eiurur.xyz/</a>~~
 
 <br>
 
@@ -294,9 +294,15 @@ Verify が完了すると承認待ちになるのでしばらく待ちます。�
 
 - コンテンツの登録には Chrome Extension が必要です。<a href="https://github.com/eiurur/Save-to-Kawpaa">こちらから</a>最新版をダウンロードしてください。
 - ローカルで立ち上げず、VPS やクラウドで立ち上げる場合は、上記手順ならびにソースコードの`https://127.0.0.1:9021`を各自のドメインに置き換えてください。
+
   - また、<a href="https://github.com/eiurur/Save-to-Kawpaa">ChromeExtension</a>も同様の置き換えを行った上で再ビルドが必要ですのでご注意ください。
     <br>
 
-# 開発方法
+- <a href="https://danbooru.donmai.us/">Danbooru</a>の画像を保存するには Danbooru の APIKey が必要です。
 
-WIP
+  - 1. (<a href="https://danbooru.donmai.us/login">ログイン画面</a>でログインまたはユーザの登録をしてください。
+  - 2. <a href="https://danbooru.donmai.us/profile">ユーザ画面</a>の API Key の View リンクをクリックしてください。
+  - 3. Add ボタンから必要なパーミッションを付与した APIKey を作成してください。Name は任意、IP Address は空欄。Permissions は「explore/posts:popular」「explore/posts:searches」「explore/posts:viewed」「posts:show」の 4 つを選択してください。
+  - 4. `.env.docker`の`DANBOORU_USERNAME`にログインに使用するユーザ名を、`DANBOORU_API_KEY`に API キー一覧画面の`Key`を設定してください。
+  - <img src="media/danbooru-key.jpg" alt="danbooru_key" width="640" height="auto">
+  - 5. 「4. アプリケーションの起動」の手順にしたがってアプリケーションを再起動してください。
