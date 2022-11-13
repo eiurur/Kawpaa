@@ -306,13 +306,15 @@ A. <a href="https://danbooru.donmai.us/">Danbooru</a>の画像を保存するに
 
 以下の手順に従って、API Key の登録をしてください。
 
-1. (<a href="https://danbooru.donmai.us/login">ログイン画面</a>でログインまたはユーザの登録をしてください。
+1. <a href="https://danbooru.donmai.us/login">ログイン画面</a>でログインまたはユーザの登録をしてください。
 
 2. <a href="https://danbooru.donmai.us/profile">ユーザ画面</a>の API Key の View リンクをクリックしてください。
 
 3. Add ボタンから必要なパーミッションを付与した APIKey を作成してください。Name は任意、IP Address は空欄。Permissions は「explore/posts:popular」「explore/posts:searches」「explore/posts:viewed」「posts:show」の 4 つを選択してください。
 
-4. `.env.docker`の`DANBOORU_USERNAME`にログインに使用するユーザ名を、`DANBOORU_API_KEY`に API キー一覧画面の`Key`を設定してください。
+<img src="media/danbooru_set.png" alt="danbooru_set" width="640" height="auto">
+
+4. `.env.docker`の`DANBOORU_USERNAME`にログインで使用するユーザ名を、`DANBOORU_API_KEY`に API キー一覧画面の`Key`を設定してください。
 
 <img src="media/danbooru_key.png" alt="danbooru_key" width="640" height="auto">
 
