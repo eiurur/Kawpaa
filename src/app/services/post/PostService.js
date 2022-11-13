@@ -3,36 +3,11 @@ const path = require('path');
 
 const { logger } = require(path.resolve('logger'));
 
-const { httpException } = require(path.resolve(
-  'build',
-  'domains',
-  'exceptions',
-  'httpException'
-));
-const {
-  PostRepository,
-  DonePostRepository,
-  DoneHistoryRepository,
-} = require(path.resolve('build', 'model', 'repository'));
-const KawpaaImageFile = require(path.resolve(
-  'build',
-  'domains',
-  'data',
-  'files',
-  'KawpaaImageFile'
-));
-const DatabaseProviderFactory = require(path.resolve(
-  'build',
-  'model',
-  'lib',
-  'DatabaseProviderFactory'
-));
-const MongooseObjectNormalizer = require(path.resolve(
-  'build',
-  'model',
-  'lib',
-  'MongooseObjectNormalizer'
-));
+const { httpException } = require(path.resolve('build', 'domains', 'exceptions', 'httpException'));
+const { PostRepository, DonePostRepository, DoneHistoryRepository } = require(path.resolve('build', 'model', 'repository'));
+const KawpaaImageFile = require(path.resolve('build', 'domains', 'data', 'files', 'KawpaaImageFile'));
+const DatabaseProviderFactory = require(path.resolve('build', 'model', 'lib', 'DatabaseProviderFactory'));
+const MongooseObjectNormalizer = require(path.resolve('build', 'model', 'lib', 'MongooseObjectNormalizer'));
 
 /*
 QUESTION: PostServiceなのにDonePostとDoneHistoryが混在している。typeで分岐させるのがすでに失敗だったのでは？
@@ -66,9 +41,7 @@ module.exports = class PostService {
 
   static findOne(type, condition) {
     const providerType = this.getProviderType(type);
-    return DatabaseProviderFactory.createProvider(providerType).findById(
-      condition
-    );
+    return DatabaseProviderFactory.createProvider(providerType).findById(condition);
   }
 
   /**
@@ -78,9 +51,7 @@ module.exports = class PostService {
    */
   static findByIdBeforeAndAfter(type, condition) {
     const providerType = this.getProviderType(type);
-    return DatabaseProviderFactory.createProvider(
-      providerType
-    ).findByIdBeforeAndAfter(condition);
+    return DatabaseProviderFactory.createProvider(providerType).findByIdBeforeAndAfter(condition);
   }
 
   /**
@@ -90,30 +61,22 @@ module.exports = class PostService {
    */
   static findRelativeImages(type, condition) {
     const providerType = this.getProviderType(type);
-    return DatabaseProviderFactory.createProvider(
-      providerType
-    ).findRelativeImages(condition);
+    return DatabaseProviderFactory.createProvider(providerType).findRelativeImages(condition);
   }
 
   static count(type, condition) {
     const providerType = this.getProviderType(type);
-    return DatabaseProviderFactory.createProvider(providerType).count(
-      condition
-    );
+    return DatabaseProviderFactory.createProvider(providerType).count(condition);
   }
 
   static countAll(type, condition) {
     const providerType = this.getProviderType(type);
-    return DatabaseProviderFactory.createProvider(providerType).countAll(
-      condition
-    );
+    return DatabaseProviderFactory.createProvider(providerType).countAll(condition);
   }
 
   static async compress(type, format, condition) {
     const posts = await this.find(type, condition);
-    const files = posts.map(
-      (post) => new KawpaaImageFile(post.images.medium, 'thumbnail')
-    );
+    const files = posts.map((post) => new KawpaaImageFile(post.images.medium, 'thumbnail'));
     return files.filter((kawpaaImageFile) => kawpaaImageFile.exist());
   }
 

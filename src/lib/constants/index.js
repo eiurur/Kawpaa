@@ -28,6 +28,7 @@ exports.EXCEPTION_SITE_URLS = ['www.youtube.com/watch?v=', 'pornhub.com', 'komif
  *
  */
 exports.SPECIAL_HOSTNAME = {
+  DANBOORU_HOSTNAME: 'danbooru.donmai.us',
   DEVIANTART_HOSTNAME: 'deviantart.com',
   GELBOORU_HOSTNAME: 'gelbooru.com',
   PIXIV_HOSTNAME: 'pixiv.net',

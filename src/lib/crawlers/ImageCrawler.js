@@ -11,10 +11,11 @@ const FindPostCollection = require('./FindPostCollection');
 const FindCategoryPost = require('./FindCategoryPost');
 
 module.exports = class ImageCrawler {
-  constructor({ name, term, options = {} }) {
+  constructor({ name, term, auth, options = {} }) {
     this.name = name;
     this.hostname = name;
     this.term = term;
+    this.auth = auth;
     this.options = options;
     this.illusts = [];
     this.preprocess();
@@ -25,7 +26,7 @@ module.exports = class ImageCrawler {
   }
 
   setCrawler(Crawler) {
-    const initial = { term: this.term, date: this.date };
+    const initial = { term: this.term, date: this.date, auth: this.auth };
     this.crawler = new Crawler(initial);
   }
 
