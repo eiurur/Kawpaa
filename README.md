@@ -292,25 +292,25 @@ Verify が完了すると承認待ちになるのでしばらく待ちます。�
 
 # その他
 
-- コンテンツの登録には Chrome Extension が必要です。<a href="https://github.com/eiurur/Save-to-Kawpaa">こちらから</a>最新版をダウンロードしてください。
+- コンテンツの登録には Chrome Extension が必要です。<a href="https://github.com/eiurur/Save-to-Kawpaa" target="_blank">こちらから</a>最新版をダウンロードしてください。
 - ローカルで立ち上げず、VPS やクラウドで立ち上げる場合は、上記手順ならびにソースコードの`https://127.0.0.1:9021`を各自のドメインに置き換えてください。
 
-  - また、<a href="https://github.com/eiurur/Save-to-Kawpaa">ChromeExtension</a>も同様の置き換えを行った上で再ビルドが必要ですのでご注意ください。
+  - また、<a href="https://github.com/eiurur/Save-to-Kawpaa" target="_blank">ChromeExtension</a>も同様の置き換えを行った上で再ビルドが必要ですのでご注意ください。
     <br>
 
 # トラブルシューティング
 
 ## Q. Danbooru の画像が保存できない
 
-A. <a href="https://danbooru.donmai.us/">Danbooru</a>の画像を保存するには Danbooru の APIKey が必要です。
+A. <a href="https://danbooru.donmai.us/" target="_blank">Danbooru</a>の画像を保存するには Danbooru の APIKey が必要です。
 
 以下の手順に従って、API Key の登録をしてください。
 
-1. <a href="https://danbooru.donmai.us/login">ログイン画面</a>でログインまたはユーザの登録をしてください。
+1. <a href="https://danbooru.donmai.us/login" target="_blank">ログイン画面</a>でログインまたはユーザの登録をしてください。
 
-2. <a href="https://danbooru.donmai.us/profile">ユーザ画面</a>の API Key の View リンクをクリックしてください。
+2. <a href="https://danbooru.donmai.us/profile" target="_blank">ユーザ画面</a>の API Key の View リンクをクリックしてください。
 
-3. Add ボタンから必要なパーミッションを付与した APIKey を作成してください。Name は任意、IP Address は空欄。Permissions は「explore/posts:popular」「explore/posts:searches」「explore/posts:viewed」「posts:show」の 4 つを選択してください。
+3. Add ボタンから必要なパーミッションを付与した API Key を作成してください。Name は任意、IP Address は空欄。Permissions は「explore/posts:popular」「explore/posts:searches」「explore/posts:viewed」「posts:show」の 4 つを選択してください。
 
 <img src="media/danbooru_set.png" alt="danbooru_set" width="640" height="auto">
 
