@@ -298,11 +298,22 @@ Verify が完了すると承認待ちになるのでしばらく待ちます。�
   - また、<a href="https://github.com/eiurur/Save-to-Kawpaa">ChromeExtension</a>も同様の置き換えを行った上で再ビルドが必要ですのでご注意ください。
     <br>
 
-- <a href="https://danbooru.donmai.us/">Danbooru</a>の画像を保存するには Danbooru の APIKey が必要です。
+# トラブルシューティング
 
-  - 1. (<a href="https://danbooru.donmai.us/login">ログイン画面</a>でログインまたはユーザの登録をしてください。
-  - 2. <a href="https://danbooru.donmai.us/profile">ユーザ画面</a>の API Key の View リンクをクリックしてください。
-  - 3. Add ボタンから必要なパーミッションを付与した APIKey を作成してください。Name は任意、IP Address は空欄。Permissions は「explore/posts:popular」「explore/posts:searches」「explore/posts:viewed」「posts:show」の 4 つを選択してください。
-  - 4. `.env.docker`の`DANBOORU_USERNAME`にログインに使用するユーザ名を、`DANBOORU_API_KEY`に API キー一覧画面の`Key`を設定してください。
-  - <img src="media/danbooru-key.jpg" alt="danbooru_key" width="640" height="auto">
-  - 5. 「4. アプリケーションの起動」の手順にしたがってアプリケーションを再起動してください。
+## Q. Danbooru の画像が保存できない
+
+A. <a href="https://danbooru.donmai.us/">Danbooru</a>の画像を保存するには Danbooru の APIKey が必要です。
+
+以下の手順に従って、API Key の登録をしてください。
+
+1. (<a href="https://danbooru.donmai.us/login">ログイン画面</a>でログインまたはユーザの登録をしてください。
+
+2. <a href="https://danbooru.donmai.us/profile">ユーザ画面</a>の API Key の View リンクをクリックしてください。
+
+3. Add ボタンから必要なパーミッションを付与した APIKey を作成してください。Name は任意、IP Address は空欄。Permissions は「explore/posts:popular」「explore/posts:searches」「explore/posts:viewed」「posts:show」の 4 つを選択してください。
+
+4. `.env.docker`の`DANBOORU_USERNAME`にログインに使用するユーザ名を、`DANBOORU_API_KEY`に API キー一覧画面の`Key`を設定してください。
+
+<img src="media/danbooru_key.png" alt="danbooru_key" width="640" height="auto">
+
+5. 「4. アプリケーションの起動」の手順にしたがってアプリケーションを再起動してください。
