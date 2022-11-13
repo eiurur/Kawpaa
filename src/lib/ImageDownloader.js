@@ -8,6 +8,11 @@ module.exports = class ImageDownloader {
     this.filepath = filepath;
   }
 
+  setUrl(url) {
+    this.url = url;
+    return this;
+  }
+
   setOptions(options) {
     this.options = options;
     return this;

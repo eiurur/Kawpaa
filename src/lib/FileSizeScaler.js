@@ -6,8 +6,11 @@ const { logger } = require(path.resolve('logger'));
  * ファイルの量り
  */
 module.exports = class FileSizeScaler {
-  constructor(url) {
+  constructor() {}
+
+  setUrl(url) {
     this.url = url;
+    return this;
   }
 
   setOptions(options = {}) {
@@ -22,8 +25,8 @@ module.exports = class FileSizeScaler {
       logger.info('options', this.options);
       axios
         .head(this.url, this.options)
-        .then(response => resolve(response.headers['content-length']))
-        .catch(err => reject(err));
+        .then((response) => resolve(response.headers['content-length']))
+        .catch((err) => reject(err));
     });
   }
 };

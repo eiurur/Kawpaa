@@ -32,6 +32,7 @@ module.exports = class KawpaaCapacity {
    */
   async fetch({ process }) {
     const proxy = new KawpaaHttpProxy();
+    proxy.setUrl(this.hostName, this.url);
     proxy.setHeaders(this.hostName, this.siteUrl);
     const byte = await proxy.execute(process);
     return byte;

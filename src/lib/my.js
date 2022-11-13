@@ -6,6 +6,7 @@ const chalk = require('chalk');
 const request = require('request');
 const moment = require('moment');
 const crypto = require('crypto');
+const url = require('url');
 
 const { logger } = require(path.resolve('logger'));
 
@@ -267,6 +268,13 @@ num =  ${num} array = ${array.length}, result = ${result.length}\
           })
           .on('error', (err) => reject(err));
       });
+    },
+
+    //REF: https://gist.github.com/aizatto/c1f42416034cf0e3303c85f4dd251334
+    appendQueryString(url_string, query_string_object) {
+      const parsed_url = url.parse(url_string, true);
+      parsed_url.query = Object.assign(parsed_url.query, query_string_object);
+      return url.format(parsed_url);
     },
   };
 };

@@ -1,10 +1,18 @@
 const path = require('path');
-
 const { SPECIAL_HOSTNAME } = require(path.resolve('build', 'lib', 'constants'));
+const { my } = require(path.resolve('build', 'lib', 'my'));
 
 module.exports = class KawpaaHttpProxy {
   constructor(options = {}) {
     this.options = options;
+  }
+  setUrl(hostname, url) {
+    if (hostname.indexOf(SPECIAL_HOSTNAME.DANBOORU_HOSTNAME) !== -1) {
+      const auth = { login: process.env.DANBOORU_USERNAME, api_key: process.env.DANBOORU_API_KEY };
+      this.url = my.appendQueryString(url, auth);
+    } else {
+      this.url = url;
+    }
   }
 
   setHeaders(hostname, referer) {
@@ -21,9 +29,7 @@ module.exports = class KawpaaHttpProxy {
           referer: 'https://komiflo.com/',
         },
       };
-    } else if (
-      hostname.indexOf(SPECIAL_HOSTNAME.SANKAKUCOMPLEX_HOSTNAME) !== -1
-    ) {
+    } else if (hostname.indexOf(SPECIAL_HOSTNAME.SANKAKUCOMPLEX_HOSTNAME) !== -1) {
       options = {
         headers: {
           'User-Agent': 'Magic Browser',
@@ -48,6 +54,6 @@ module.exports = class KawpaaHttpProxy {
   }
 
   execute(processer) {
-    return processer.setOptions(this.options).execute();
+    return processer.setUrl(this.url).setOptions(this.options).execute();
   }
 };

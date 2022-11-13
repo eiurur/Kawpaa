@@ -4,9 +4,7 @@ const VideoDownloader = require(path.resolve('build', 'lib', 'VideoDownloader'))
 const KawpaaHttpProxy = require(path.resolve('build', 'domains', 'proxy', 'KawpaaHttpProxy'));
 
 module.exports = class KawpaaVideoDownloader {
-  constructor({
-    hostName, siteUrl, url, filepath,
-  }) {
+  constructor({ hostName, siteUrl, url, filepath }) {
     this.hostName = hostName;
     this.siteUrl = siteUrl;
     this.url = url;
@@ -20,6 +18,7 @@ module.exports = class KawpaaVideoDownloader {
    */
   async fetch({ process }) {
     const proxy = new KawpaaHttpProxy();
+    proxy.setUrl(this.hostName, this.url);
     proxy.setHeaders(this.hostName, this.siteUrl);
     const byte = await proxy.execute(process);
     return byte;
