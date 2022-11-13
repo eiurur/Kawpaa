@@ -15,12 +15,13 @@ RUN chmod +x /wait
 WORKDIR /var/www/myapp
 
 # Copy the package.json to workdir
+COPY package-lock.json ./
 COPY package.json ./
 
 # Copy application source
 COPY . .
 
-RUN npm install
+RUN npm cache clean -f && npm install
 
 # Copy .env.docker to workdir/.env - use the docker env
 COPY .env.docker ./.env
