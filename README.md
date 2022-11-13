@@ -302,7 +302,7 @@ Verify が完了すると承認待ちになるのでしばらく待ちます。�
 
 ## Q. Danbooru の画像が保存できない
 
-A. <a href="https://danbooru.donmai.us/" target="_blank">Danbooru</a>の画像を保存するには Danbooru の APIKey が必要です。
+A. <a href="https://danbooru.donmai.us/" target="_blank">Danbooru</a>の画像を保存するには Danbooru の API Key が必要です。
 
 以下の手順に従って、API Key の登録をしてください。
 
