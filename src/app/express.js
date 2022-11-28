@@ -68,7 +68,11 @@ module.exports = () => {
   app.use(passport.session());
   app.use(clientErrorHandler);
   app.use(errorHandler);
-  app.use(helmet());
+  app.use(
+    helmet({
+      contentSecurityPolicy: false,
+    })
+  );
 
   // development only
   if (env === 'development') {
