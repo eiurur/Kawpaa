@@ -22,6 +22,7 @@ module.exports = () => {
     saveUninitialized: false,
     resave: false,
     name: 'Kawpaa',
+    cookie: { secure: true },
     store: MongoStore.create({
       mongoUrl: process.env.MONGODB_URI,
       collection: 'sessions',
@@ -65,16 +66,7 @@ module.exports = () => {
   app.use(passport.session());
   app.use(clientErrorHandler);
   app.use(errorHandler);
-  app.use(helmet.dnsPrefetchControl());
-  app.use(helmet.expectCt());
-  app.use(helmet.frameguard());
-  app.use(helmet.hidePoweredBy());
-  app.use(helmet.hsts());
-  app.use(helmet.ieNoOpen());
-  app.use(helmet.noSniff());
-  app.use(helmet.permittedCrossDomainPolicies());
-  app.use(helmet.referrerPolicy());
-  app.use(helmet.xssFilter());
+  app.use(helmet());
 
   // development only
   if (env === 'development') {
