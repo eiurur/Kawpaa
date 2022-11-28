@@ -7,6 +7,7 @@ const helmet = require('helmet');
 const cors = require('cors');
 const passport = require('passport');
 const session = require('express-session');
+const { shouldSendSameSiteNone } = require('should-send-same-site-none');
 const compression = require('compression');
 const MongoStore = require('connect-mongo');
 const { logger } = require(path.resolve('logger'));
@@ -55,6 +56,7 @@ module.exports = () => {
   app.set('port', process.env.PORT);
   app.set('views', path.join(__dirname, 'views'));
   app.set('view engine', 'jade');
+  app.use(shouldSendSameSiteNone);
   app.use(cookieParser());
   app.use(bodyParser.json({ extended: true, limit: '256mb' }));
   app.use(bodyParser.urlencoded({ extended: true, limit: '256mb' }));

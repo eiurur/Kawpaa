@@ -72,6 +72,7 @@
     "request": "^2.88.2",
     "samune": "^0.6.0",
     "session": "^0.1.0",
+    "should-send-same-site-none": "^2.0.5",
     "slack-node": "^0.2.0",
     "sleep-promise": "^9.1.0",
     "sosyaku": "0.0.3",
