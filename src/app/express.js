@@ -23,6 +23,7 @@ module.exports = () => {
     saveUninitialized: false,
     resave: false,
     name: 'Kawpaa',
+    cookie: { secure: !my.toBoolean(process.env.FORCE_HTTP) },
     store: MongoStore.create({
       mongoUrl: process.env.MONGODB_URI,
       collection: 'sessions',
