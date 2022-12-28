@@ -11,6 +11,7 @@ const { shouldSendSameSiteNone } = require('should-send-same-site-none');
 const compression = require('compression');
 const MongoStore = require('connect-mongo');
 const { logger } = require(path.resolve('logger'));
+const { my } = require(path.resolve('build', 'lib', 'my'));
 
 require('dotenv').config();
 
@@ -23,7 +24,10 @@ module.exports = () => {
     saveUninitialized: false,
     resave: false,
     name: 'Kawpaa',
-    cookie: { secure: !my.toBoolean(process.env.FORCE_HTTP) },
+    cookie: {
+      httpOnly: true,
+      secure: !my.toBoolean(process.env.FORCE_HTTP),
+    },
     store: MongoStore.create({
       mongoUrl: process.env.MONGODB_URI,
       collection: 'sessions',
