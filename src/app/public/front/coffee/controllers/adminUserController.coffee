@@ -22,7 +22,7 @@ angular.module "myApp.controllers"
     AuthService.status.isAuthenticated = true
     AuthService.user = response.data
     KawpaaLocalStorageService.set 'userObjectId', response.data.userObjectId
-    KawpaaLocalStorageService.set 'twitterIdStr', AuthService.user._json.id_str
+    KawpaaLocalStorageService.set 'twitterIdStr', AuthService.user.twitterIdStr
 
     $scope.user = response.data
     $scope.isAuthenticated = true

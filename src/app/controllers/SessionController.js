@@ -1,11 +1,6 @@
 const path = require('path');
 
-const DatabaseProviderFactory = require(path.resolve(
-  'build',
-  'model',
-  'lib',
-  'DatabaseProviderFactory',
-));
+const DatabaseProviderFactory = require(path.resolve('build', 'model', 'lib', 'DatabaseProviderFactory'));
 
 module.exports = class SessionController {
   static async get(req, res) {
@@ -16,7 +11,7 @@ module.exports = class SessionController {
         throw new Error('you have not session');
       }
 
-      const params = { twitterIdStr: session._json.id_str };
+      const params = { twitterIdStr: session.twitterIdStr };
       const userProvider = DatabaseProviderFactory.createProvider('User');
       const user = await userProvider.findByTwitterIdStr(params);
       res.send(Object.assign(session, { userObjectId: user._id }));

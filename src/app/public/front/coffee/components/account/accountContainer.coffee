@@ -12,21 +12,21 @@ angular.module "myApp.directives"
                 <h3>プロフィール</h3>
                 <div class="profile__container">
                   <div class="media">
-                    <a href="https://www.twitter.com/{{$ctrl.user._json.screen_name}}" target="_blank" class="pull-left">
+                    <a href="https://www.twitter.com/{{$ctrl.user.screenName}}" target="_blank" class="pull-left">
                       <img ng-src="{{$ctrl.user._json.profile_image_url_https}}" img-preload="img-preload" class="media-object icon-img fade"/>
                     </a>
                     <div class="media-body">
                       <h4 class="media-heading">
-                        <span class="name">{{$ctrl.user._json.name}}</span>
-                        <span class="screen-name">@{{$ctrl.user._json.screen_name}}</span>
+                        <span class="name">{{$ctrl.user.name}}</span>
+                        <span class="screen-name">@{{$ctrl.user.screenName}}</span>
                       </h4>
-                      <span ng-bind-html="$ctrl.user._json.description | newlines"></span>
+                      <span ng-bind-html="$ctrl.user.description | newlines"></span>
                     </div>
                   </div>
                 </div>
 
                 <h3>トークン</h3>
-                <pre><code>{{$ctrl.user.twitter_token}}</code></pre>
+                <pre><code>{{$ctrl.user.accessToken}}</code></pre>
 
                 <hr class="divider"/>
                 <div class="import-export">
