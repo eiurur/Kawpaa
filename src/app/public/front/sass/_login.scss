@@ -1,5 +1,12 @@
 @charset "utf-8";
 
+.login-form {
+  display: flex;
+  flex-direction: column;
+  .form-group + .form-group {
+    margin-left: 1rem;
+  }
+}
 // From Boxify(http://tympanus.net/Freebies/Boxify/)
 .hero {
   position: relative;

@@ -1,5 +1,6 @@
 const path = require('path');
 const passport = require('passport');
+const LocalStrategy = require('passport-local');
 const TwitterStrategy = require('passport-twitter').Strategy;
 
 require('dotenv').config();
@@ -60,6 +61,94 @@ module.exports = (app) => {
     )
   );
 
+  // passport.use(
+  //   'local-signup',
+  //   new LocalStrategy(
+  //     {
+  //       usernameField: 'email',
+  //       passwordField: 'password',
+  //       passReqToCallback: true,
+  //     },
+  //     async (req, email, password, done) => {
+  //       const userProvider = ModelProviderFactory.create('user');
+  //       const user = await userProvider.findOne({ email: email });
+  //       console.log(user);
+  //       try {
+  //         if (user) {
+  //           const isMatch = await user.comparePassword(password, user.salt);
+  //           if (isMatch) {
+  //             return done(null, user);
+  //           }
+  //         }
+  //         const newUser = new userProvider.schema();
+  //         newUser.email = email;
+  //         newUser.password = password;
+  //         newUser.token = token;
+  //         await newUser.save(newUser);
+  //         return done(null, newUser);
+  //       } catch (err) {
+  //         if (err) return done(err);
+  //       }
+  //     }
+  //   )
+  // );
+
+  // passport.use(
+  //   'local-signin',
+  //   new LocalStrategy(
+  //     {
+  //       usernameField: 'email',
+  //       passwordField: 'password',
+  //       passReqToCallback: true,
+  //     },
+  //     async (req, email, password, done) => {
+  //       try {
+  //         const userProvider = ModelProviderFactory.create('user');
+  //         console.log(email, password);
+  //         const user = await userProvider.findOne({ email: email });
+  //         if (user) {
+  //           const isMatch = await user.comparePassword(password, user.salt);
+  //           if (isMatch) {
+  //             console.log(user);
+  //             return done(null, user);
+  //           }
+  //         }
+  //         return done(null, false, { message: 'ログインに失敗しました。' });
+  //       } catch (err) {
+  //         console.log(err);
+  //         if (err) return done(err);
+  //       }
+  //     }
+  //   )
+  // );
+
+  passport.use(
+    'token-signin',
+    new LocalStrategy(
+      {
+        usernameField: 'token',
+        passwordField: 'password',
+        passReqToCallback: true,
+      },
+      async (req, token, password, done) => {
+        try {
+          const userProvider = DatabaseProviderFactory.createProvider('User');
+          const user = await userProvider.findOne({ accessToken: token });
+          logger.info(token, password);
+          if (user) {
+            user.twitter_token = user.accessToken;
+            user.twitter_token_secret = user.accessTokenSecret;
+            return done(null, user);
+          }
+          return done(null, false, { message: 'ログインに失敗しました。' });
+        } catch (err) {
+          logger.info(err);
+          if (err) return done(err);
+        }
+      }
+    )
+  );
+
   app.get('/auth/twitter', passport.authenticate('twitter'));
 
   app.get(
@@ -69,4 +158,37 @@ module.exports = (app) => {
       failureRedirect: '/',
     })
   );
+
+  // app.post(
+  //   '/auth/signup',
+  //   passport.authenticate('local-signup', {
+  //     successRedirect: '/',
+  //     // failureRedirect: '/login',
+  //     failWithError: true,
+  //     session: true,
+  //   })
+  // );
+  // app.post(
+  //   '/auth/signinWithEmail',
+  //   passport.authenticate('local-signin', {
+  //     successRedirect: '/',
+  //     // failureRedirect: '/login',
+  //     failWithError: true,
+  //     session: true,
+  //   })
+  // );
+  app.post(
+    '/auth/signinWithToken',
+    passport.authenticate('token-signin', {
+      successRedirect: '/api/sessions',
+      // failureRedirect: '/login',
+      failWithError: true,
+      session: true,
+    })
+  );
+  app.post('/api/logout', (req, res, next) => {
+    req.logout();
+    req.session.destroy();
+    res.send('ok');
+  });
 };

@@ -1,4 +1,4 @@
-.login-container.h100per
+.login-container.h100per(ng-controller="LoginCtrl")
   header.h100per
     section.hero.h100per
       .texture-overlay
@@ -11,11 +11,30 @@
           .col-md-12
             h1.animated.fadeInDown あとで抜く
               aside.site-a-word-description ためて、たまるウェブサービス
-            a.use-btn.animated.fadeInUp(href='/auth/twitter/callback', target='_self') 使ってみる (無料)
-            a.learn-btn.animated.fadeInUp(scroll-to='#about', scroll-on-click)
-              | もっと詳しく
-              i.fa.fa-arrow-down
-
+          .col-md-12.animated.fadeInUp 
+            a.use-btn(href='/auth/twitter/callback', target='_self') Twitterでログイン
+            a.use-btn(data-toggle='modal', data-target='#sampleModal') その他のログイン方法
+  #sampleModal.modal.fade(tabindex='-1')
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal')
+            span ×
+          h4.modal-title ログイン
+        .modal-body
+          .login-form
+            //- form.navbar-form.navbar-left(ng-submit="loginWithEmail()")
+            //-   .form-group
+            //-     input.form-control(type='text', name="email", ng-model="email", placeholder='email')
+            //-   .form-group
+            //-     input.form-control(type='password', name="password", ng-model="password", placeholder='password')
+            //-   .form-group
+            //-     button.btn.btn-default#loginWithEmail(type='submit') ログイン
+            form.navbar-form.navbar-left(ng-submit="loginWithToken()")
+              .form-group
+                input.form-control(type='text', name="token", ng-model="token", placeholder='token')
+              .form-group
+                button.btn.btn-default#loginWithToken(type='submit') ログイン
   section#about.features-list.section-container
     .container
       .row
@@ -125,8 +144,4 @@
       .row
         .col-md-12
           p
-            a.use-btn(href='/auth/twitter/callback', target='_self') 使ってみる (無料)
-          p.note
-            | twitterアカウントがあればすぐに利用できます。
-            br
-            | ※ 勝手にツイートやフォローをすることありません。
+            a.use-btn(href='/auth/twitter/callback', target='_self') Twitterでログイン

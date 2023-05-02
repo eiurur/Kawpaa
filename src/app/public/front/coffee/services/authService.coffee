@@ -1,9 +1,13 @@
 angular.module "myApp.services"
   .service "AuthService", (PromiseService) ->
-    url: "/api/sessions"
-    
     fetchSession: ->
-      PromiseService.get this.url
+      PromiseService.get "/api/sessions"
+
+    loginWithEmail: (data) ->
+      PromiseService.post "/auth/signinWithEmail", data
+
+    loginWithToken: (data)->
+      PromiseService.post "/auth/signinWithToken", data
 
     status: isAuthenticated: false
 
