@@ -153,7 +153,8 @@ class MultiPostContainerController
   # REFACTORING: コピペ
   done: ->
     # 表示中の順番のまま保存されるようにする
-    posts = @posts.reverse().map (post) => postObjectId: post.postObjectId 
+    posts = @posts.slice().reverse().map (post) -> 
+      postObjectId: post._id 
     @PostManageService.doneMulti posts: posts
     .then (result) -> open(location, '_self').close()
     .catch (err) -> console.log err
