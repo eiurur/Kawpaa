@@ -152,8 +152,9 @@ class MultiPostContainerController
 
   # REFACTORING: コピペ
   done: ->
-    tasks = @params.split(',').map (postObjectId) => @PostManageService.done postObjectId: postObjectId
-    Promise.all(tasks)
+    # 表示中の順番のまま保存されるようにする
+    posts = @posts.reverse().map (post) => postObjectId: post.postObjectId 
+    @PostManageService.doneMulti posts: posts
     .then (result) -> open(location, '_self').close()
     .catch (err) -> console.log err
 
