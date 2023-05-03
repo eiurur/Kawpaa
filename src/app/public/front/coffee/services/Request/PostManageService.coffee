@@ -132,3 +132,77 @@ angular.module "myApp.services"
           return resolve response.data
         .catch (err) ->
           NotifyService.error err.statusText
+
+    # multiple
+    addInboxMulti: (params) ->
+      return $q (resolve, reject) ->
+
+        type = params.type
+        posts = params.posts.map (post) -> 
+          postObjectId: post.postObjectId
+          isArchive: false
+          isDone: false
+
+        RequestService.post "/api/posts/inbox/multi", {type: type, posts: posts}
+        .then (response) ->
+          NotifyService.success 'Inboxに追加しました'
+          return resolve response.data
+        .catch (err) ->
+          NotifyService.error err.statusText
+
+    archiveMulti: (params) ->
+      return $q (resolve, reject) ->
+        posts = params.posts.map (post) -> 
+          postObjectId: post.postObjectId
+          isArchive: true
+          isDone: false
+        RequestService.put '/api/posts/multi', posts: posts
+        .then (response) ->
+          NotifyService.success 'アーカイブに保存しました'
+          return resolve response.data
+        .catch (err) ->
+          NotifyService.error err.statusText
+
+    revertInboxMulti: (params) ->
+      return $q (resolve, reject) ->
+        posts = params.posts.map (post) -> 
+          postObjectId: post.postObjectId
+          isArchive: false
+
+        RequestService.put "/api/posts/multi", posts: posts
+        .then (response) ->
+          NotifyService.success 'Inboxに戻しました'
+          return resolve response.data
+        .catch (err) ->
+          NotifyService.error err.statusText
+
+    doneMulti: (params) ->
+      return $q (resolve, reject) ->
+
+        posts = params.posts.map (post) -> 
+          postObjectId: post.postObjectId
+          numDone: 1
+
+        RequestService.post '/api/dones', posts: posts
+        .then (response) ->
+          if _.has response.data, 'err'
+            NotifyService.error data.err.statusText
+            return reject
+
+          NotifyService.success '射精しました'
+          return resolve response.data
+        .catch (err) ->
+          NotifyService.error err.statusText
+
+    removeMulti: (params) ->
+      return $q (resolve, reject) ->
+        type = params.type
+        posts = params.posts.map (post) -> 
+          postObjectId: post.postObjectId
+
+        RequestService.delete "/api/posts/multi", {type: type, posts: posts}
+        .then (response) ->
+          NotifyService.success '削除しました'
+          return resolve response.data
+        .catch (err) ->
+          NotifyService.error err.statusText

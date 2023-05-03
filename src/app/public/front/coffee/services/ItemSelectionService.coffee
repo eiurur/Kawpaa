@@ -61,34 +61,36 @@ angular.module "myApp.services"
       $q.all(items.map (item, index) => PostManageService.sleep(index * @intervalMs).then(() => TagManageService.register(Object.assign({}, item, {tags: tags})))).then (result) => console.log(result)
       return items
 
-
     addInbox: () -> 
       items = @list()
-      $q.all(items.map (item, index) => PostManageService.sleep(index * @intervalMs).then(() => PostManageService.addInbox(item))).then (result) => console.log(result)
+      PostManageService.addInboxMulti({posts: items})
       @clear()
       return items
 
     revertInbox: () -> 
       items = @list()
-      $q.all(items.map (item, index) => PostManageService.sleep(index * @intervalMs).then(() => PostManageService.revertInbox(item))).then (result) => console.log(result)
+      PostManageService.revertInboxMulti({posts: items})
       @clear()
       return items
 
     archive: () -> 
       items = @list()
-      $q.all(items.map (item, index) => PostManageService.sleep(index * @intervalMs).then(() => PostManageService.archive(item))).then (result) => console.log(result)
+      PostManageService.archiveMulti({posts: items})
       @clear()
       return items
 
     done: () -> 
       items = @list()
-      $q.all(items.map (item, index) => PostManageService.sleep(index * @intervalMs).then(() => PostManageService.done(item))).then (result) => console.log(result)
+      PostManageService.doneMulti({posts: items})
       @clear() 
       return items
 
     remove: (param = {}) -> 
       items = @list()
       $q.all(items.map (item) -> PostManageService.remove(Object.assign({}, item, param))).then (result) => console.log(result)
+      # FIXME: typeが受け取れない
+      # posts = items.map (item) -> Object.assign({}, item, param)
+      # PostManageService.removeMulti({posts: posts})
       @clear() 
       return items
 

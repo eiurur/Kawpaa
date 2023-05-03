@@ -9,5 +9,7 @@ angular.module "myApp.services"
     put: (url, payload, opts = {}) ->
       $http.put url, payload, opts
 
-    delete: (url) ->
-      $http url: url, method: "DELETE"
+    delete: (url, payload) ->
+      $http.delete url,
+        data: payload
+        headers: 'Content-Type': 'application/json;charset=utf-8'

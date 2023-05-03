@@ -4,8 +4,16 @@ const { seaquencer } = require(path.resolve('build', 'app', 'routes', 'utils', '
 const { PostService, PostRegisterService } = require(path.resolve('build', 'app', 'services'));
 
 module.exports = class PostController {
+  static toInboxMulti(req, res) {
+    return seaquencer(req, res, PostRegisterService.toInboxMulti(req.params.type, req.params));
+  }
+
   static toInbox(req, res) {
     return seaquencer(req, res, PostService.toInbox(req.params.type, req.params));
+  }
+
+  static updateMulti(req, res) {
+    return seaquencer(req, res, PostService.upsertMulti(req.params));
   }
 
   static update(req, res) {
@@ -61,6 +69,10 @@ module.exports = class PostController {
   static countAll(req, res) {
     const condition = {};
     return seaquencer(req, res, PostService.countAll(req.params.type, condition));
+  }
+
+  static deleteMulti(req, res) {
+    return seaquencer(req, res, PostService.removeMulti(req.params.type, req.params));
   }
 
   static delete(req, res) {

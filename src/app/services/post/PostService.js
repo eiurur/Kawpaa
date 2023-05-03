@@ -84,11 +84,29 @@ module.exports = class PostService {
    *
    * @param {*} params
    */
-  static upsert(params) {
+  static async upsert(params) {
     logger.info('PostService upsert');
+    const { post } = params;
     const postRepository = new PostRepository();
-    postRepository.setPost(params.post);
+    postRepository.setPost(post);
     return postRepository.__upsert();
+  }
+
+  /**
+   *
+   * @param {*} params
+   * CAUTION: usertByIDが単一、upsertMultiが複数。usertは用途が違う。
+   */
+  static async upsertMulti(params) {
+    logger.info('PostService upsertMulti');
+    const results = [];
+    const { user, posts } = params;
+    for (const post of posts) {
+      console.log(user, post);
+      const result = await this.upsertById({ user, post });
+      results.push(result);
+    }
+    return results;
   }
 
   /**
@@ -109,6 +127,18 @@ module.exports = class PostService {
 
     postRepository.setPost(params.post);
     return postRepository.__upsertById(params.user);
+  }
+
+  static async removeMulti(type, params) {
+    console.log('params', type, params);
+    const results = [];
+    const { user, posts } = params;
+    for (const post of posts) {
+      const { postObjectId } = post;
+      const result = await this.remove(type, { user, postObjectId });
+      results.push(result);
+    }
+    return results;
   }
 
   /**
@@ -159,6 +189,18 @@ module.exports = class PostService {
         return postRepository.__remove();
       }
     }
+  }
+
+  static async toInboxMulti(type, params) {
+    const results = [];
+    console.log(params);
+    const { user, posts } = params;
+    for (let post of posts) {
+      console.log('register:', user, post);
+      const result = await this.toInbox(type, { user, ...post });
+      results.push(result);
+    }
+    return results;
   }
 
   /**
