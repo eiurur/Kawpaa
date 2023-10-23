@@ -11,12 +11,6 @@ NOTE: データの登録には<a href="https://github.com/eiurur/Save-to-Kawpaa"
 
 <br>
 
-**ホスティング例**
-
-> ~~<a href="https://kawpaa.eiurur.xyz/" target="_blank">https://kawpaa.eiurur.xyz/</a>~~
-
-<br>
-
 # 起動に必要なもの
 
 - <a href="https://git-scm.com/" target="_blank">Git</a>
