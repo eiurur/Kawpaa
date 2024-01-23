@@ -17,6 +17,11 @@ services:
     environment:
       TZ: Asia/Tokyo
       WAIT_HOSTS: kawpaa-redis:6379, kawpaa-mongo:27017
+    logging:
+      driver: json-file
+      options:
+        max-size: 1m
+        max-file: '5'
   kawpaa-mongo:
     container_name: kawpaa-mongo
     image: 'mongo:4'
